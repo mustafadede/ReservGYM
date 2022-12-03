@@ -1,12 +1,12 @@
+import React from "react";
 import { Text, TouchableOpacity } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import colorPalette from "../../themes/colors";
 import { useSelector, useDispatch } from "react-redux";
 import { changeName } from "../../redux/exampleSlicer/exampleSlicer";
+import { styles } from "./style";
 
-import React from "react";
-
-const linearButton = (props) => {
+const LinearButton = (props) => {
   const dispatch = useDispatch();
 
   return (
@@ -15,18 +15,12 @@ const linearButton = (props) => {
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         colors={props.colors}
-        style={{
-          alignItems: "center",
-          justifyContent: "center",
-          borderRadius: 40,
-          padding: 15,
-          width: 200,
-        }}
+        style={styles.button}
       >
-        <Text style={{ color: colorPalette.white, fontWeight: "bold" }}>{props.title}</Text>
+        <Text style={styles.buttonText}>{props.title}</Text>
       </LinearGradient>
     </TouchableOpacity>
   );
 };
 
-export default linearButton;
+export default LinearButton;

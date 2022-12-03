@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from "react-native-vector-icons/FontAwesome";
-import LinearButton from "./components/linearButton/linearButton";
+import LinearButton from "./components/linearButton/index";
 import colorPalette from "./themes/colors";
 
 function HomeScreen() {
