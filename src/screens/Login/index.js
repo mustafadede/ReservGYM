@@ -6,7 +6,7 @@ import colorPalette from "../../themes/colors";
 import { w, h } from "../../utils/ui/dimension";
 import styles from "./style";
 
-import { GoogleSigninButton } from "@react-native-google-signin/google-signin";
+
 
 function Login() {
   return (
