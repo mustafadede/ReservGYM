@@ -12,9 +12,11 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
   },
   creditCardForm: {
-    flex: 1,
-    justifyContent: "center",
     alignItems: "center",
+  },
+  button: {
+    alignItems: "center",
+    marginVertical: W(5),
   },
   input: {
     width: W(80),

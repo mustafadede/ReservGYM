@@ -1,22 +1,34 @@
 import { View, Text, TextInput, Image, Linking } from "react-native";
-import React from "react";
+import CheckBox from "@react-native-community/checkbox";
+import React, { useState } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { LinearButton } from "../../components/";
+import { LinearButton } from "../../components";
 import colorPalette from "../../themes/colors";
 import { w, h } from "../../utils/ui/dimension";
 import styles from "./style";
 
-import { GoogleSigninButton } from "@react-native-google-signin/google-signin";
+function Register() {
+  const [toggleCheckBox, setToggleCheckBox] = useState(false);
 
-function Login() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headText}>Merhaba</Text>
-        <Text style={styles.headText2}>Hoşgeldiniz!</Text>
+        <Text style={styles.headText2}>Hesap Oluşturun</Text>
       </View>
       <View>
-        <View style={styles.inputBox}></View>
+        <View style={styles.inputBox}>
+          <View style={styles.inputRow}>
+            <Icon name="user" size={24} color={colorPalette.lightgray} />
+            <TextInput placeholder="Adınız" style={styles.inputText} />
+          </View>
+        </View>
+        <View style={styles.inputBox}>
+          <View style={styles.inputRow}>
+            <Icon name="user" size={24} color={colorPalette.lightgray} />
+            <TextInput placeholder="Soyadınız" style={styles.inputText} />
+          </View>
+        </View>
         <View style={styles.inputBox}>
           <View style={styles.inputRow}>
             <Icon name="envelope-o" size={24} color={colorPalette.lightgray} />
@@ -26,23 +38,38 @@ function Login() {
         <View style={styles.inputBox}>
           <View style={styles.inputRow}>
             <Icon name="lock" size={30} color={colorPalette.lightgray} />
-            <TextInput secureTextEntry placeholder="Şifre" style={styles.inputText} />
+            <TextInput placeholder="Şifre" style={styles.inputText} />
             <Icon name="eye-slash" size={24} color={colorPalette.lightgray} />
           </View>
         </View>
         <View style={styles.checkRow}>
-          <View style={{ marginRight: w * 0.5 }}></View>
-          <Text
-            style={{ textDecorationLine: "underline" }}
-            onPress={() => {
-              Linking.openURL("https://support.google.com/mail/answer/41078?hl=tr&co=GENIE.Platform%3DDesktop");
-            }}
-          >
-            Şifrenizi unuttunuz mu?
+          <CheckBox
+            boxType="square"
+            onCheckColor={colorPalette.darkRed}
+            onTintColor={colorPalette.darkRed}
+            TintColors={colorPalette.darkRed}
+            lineWidth={1}
+            width={1}
+            disabled={false}
+            value={toggleCheckBox}
+            onValueChange={(newValue) => setToggleCheckBox(newValue)}
+          />
+          <Text style={styles.kvkk}>
+            Devam ederek
+            <Text
+              style={{ textDecorationLine: "underline" }}
+              onPress={() => {
+                Linking.openURL("https://www.nvi.gov.tr/kvkk-aydinlatma-metni");
+              }}
+            >
+              {" "}
+              KVKK
+            </Text>{" "}
+            ve Kullanım Koşullarımızı kabul etmiş olduğunuzu onaylıyorsunuz.
           </Text>
         </View>
         <View style={styles.inputButton}>
-          <LinearButton colors={[colorPalette.lightRed, colorPalette.darkRed]} title={"Giriş yap"} />
+          <LinearButton colors={[colorPalette.lightRed, colorPalette.darkRed]} title={"Üye Ol"} />
         </View>
 
         <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -56,7 +83,7 @@ function Login() {
             }}
           />
           <View>
-            <Text style={{ width: w * 0.2, textAlign: "center", marginTop: "20%" }}>Veya</Text>
+            <Text style={{ width: w * 0.2, textAlign: "center", marginTop: "30%" }}>Veya</Text>
           </View>
           <View
             style={{
@@ -69,17 +96,15 @@ function Login() {
           />
         </View>
         <Image source={require("../../assets/google.png")} style={styles.google} />
-
         <Text style={{ alignSelf: "center", marginTop: "4%" }}>
-          Bir hesabınız yok mu ?
+          Zaten bir hesabınız var mı?{" "}
           <Text
             style={{ color: colorPalette.darkRed }}
             onPress={() => {
               Linking.openURL("https://www.google.com/intl/tr/account/about/");
             }}
           >
-            {" "}
-            Kayıt olun
+            Giriş Yapın
           </Text>
         </Text>
       </View>
@@ -87,4 +112,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;

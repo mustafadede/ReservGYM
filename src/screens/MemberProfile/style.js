@@ -5,12 +5,13 @@ const styles = StyleSheet.create({
   main: {
     flex: 1,
     alignItems: "center",
+    paddingHorizontal: W(6),
   },
   member: {
     marginTop: H(-10),
   },
   buttonLinearContainer: {
-    marginTop: H(20),
+    marginTop: H(10),
   },
   buttonLinear: {
     marginTop: H(2),
