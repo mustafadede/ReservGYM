@@ -1,4 +1,4 @@
-import { View, Text, Image } from "react-native";
+import { View, Text } from "react-native";
 import styles from "./style";
 import Icon from "react-native-vector-icons/Ionicons";
 import Lottie from "lottie-react-native";

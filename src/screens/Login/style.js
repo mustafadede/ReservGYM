@@ -1,22 +1,33 @@
 import { StyleSheet } from "react-native";
-import { colorPalette } from "../../themes/colors";
+import colorPalette from "../../themes/colors";
+import { w, h, W, H } from "../../utils/ui/dimension";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colorPalette.white,
+    justifyContent: "center",
   },
 
   header: {
     marginTop: "4%",
     alignItems: "center",
   },
-
+  google: {
+    borderWidth: 1,
+    alignSelf: "center",
+    borderRadius: 15,
+    width: W(15),
+    borderColor: colorPalette.lightgray,
+    resizeMode: "center",
+    marginTop: H(2),
+  },
   checkRow: {
     flexDirection: "row",
     alignSelf: "center",
     paddingHorizontal: "2%",
-    height: h * 0.1,
+    marginHorizontal: H(1),
+    marginBottom: H(10),
   },
   inputRow: {
     flexDirection: "row",
@@ -28,10 +39,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: "4%",
     paddingVertical: "2%",
     borderRadius: 20,
+    alignItems: "center",
   },
   inputText: {
     flex: 2,
     fontWeight: "100",
+    marginHorizontal: W(2),
   },
 
   inputBox: {

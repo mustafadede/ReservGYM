@@ -6,10 +6,11 @@ const styles = StyleSheet.create({
     paddingTop: W(15),
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-around",
+    paddingHorizontal: W(5),
+    justifyContent: "space-between",
   },
   header: {
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: "bold",
   },
 });

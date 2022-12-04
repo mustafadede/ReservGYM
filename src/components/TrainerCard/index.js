@@ -5,10 +5,7 @@ import styles from "./style";
 const TrainerCard = ({ title, subTitle, handlePresentModalPress }) => {
   return (
     <>
-      <TouchableOpacity
-        style={styles.trainerCardWrapper}
-        onPress={handlePresentModalPress}
-      >
+      <TouchableOpacity style={styles.trainerCardWrapper} onPress={handlePresentModalPress}>
         <Image
           source={{
             uri: "https://avatars.githubusercontent.com/u/100048051?v=4",
@@ -25,4 +22,4 @@ const TrainerCard = ({ title, subTitle, handlePresentModalPress }) => {
   );
 };
 
-export default TrainerCard;
+export { TrainerCard };

@@ -1,11 +1,10 @@
 import { View, Text, Image } from "react-native";
 import React from "react";
-import { FlatList, ScrollView } from "react-native-gesture-handler";
+import { FlatList } from "react-native-gesture-handler";
 import styles from "./style";
-import HeaderBar from "../../components/HeaderBar";
+import { HeaderBar } from "../../components";
 import Icon from "react-native-vector-icons/AntDesign";
 import colorPalette from "../../themes/colors";
-import { W } from "../../utils/ui/dimension";
 
 const data = [
   {
