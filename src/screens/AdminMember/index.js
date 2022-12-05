@@ -5,10 +5,12 @@ import colorPalette from "../../themes/colors";
 import { spacing } from "../../configs/";
 import { styles } from "./style";
 
-const AdminMember = () => {
+const AdminMember = ({ navigation }) => {
   return (
     <>
-      <HeaderBar title={"Admin Member"} />
+      <HeaderBar title={"Üye"} back
+        onClickBackHandler={() => navigation.goBack()}
+      />
       <View style={styles.main}>
         <Member />
         <Spacing spacing={spacing.xs} />

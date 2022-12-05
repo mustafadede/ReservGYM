@@ -76,6 +76,9 @@ const styles = StyleSheet.create({
     marginBottom: "1%",
     color: colorPalette.lightgray,
   },
+  LoginButton: {
+    flexDirection: "row", marginTop: "4%", alignItems:"center", justifyContent:"center"
+  }
 });
 
 export default styles;

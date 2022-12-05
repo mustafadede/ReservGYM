@@ -5,7 +5,6 @@ import colorPalette from "../../themes/colors";
 
 export const styles = StyleSheet.create({
   main: {
-    alignItems: "center",
     paddingHorizontal: spacing.m,
   },
   paymentList: {
