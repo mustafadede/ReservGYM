@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Image, Linking } from "react-native";
+import { View, Text, TextInput, Image, Linking, TouchableOpacity } from "react-native";
 import CheckBox from "@react-native-community/checkbox";
 import React, { useState } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -7,7 +7,7 @@ import colorPalette from "../../themes/colors";
 import { w, h } from "../../utils/ui/dimension";
 import styles from "./style";
 
-function Register() {
+function Register({ navigation }) {
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
 
   return (
@@ -69,7 +69,9 @@ function Register() {
           </Text>
         </View>
         <View style={styles.inputButton}>
-          <LinearButton colors={[colorPalette.lightRed, colorPalette.darkRed]} title={"Üye Ol"} />
+          <LinearButton colors={[colorPalette.lightRed, colorPalette.darkRed]} title={"Üye Ol"}
+            onClickHandler={() => navigation.navigate("Login")}
+          />
         </View>
 
         <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -96,17 +98,21 @@ function Register() {
           />
         </View>
         <Image source={require("../../assets/google.png")} style={styles.google} />
-        <Text style={{ alignSelf: "center", marginTop: "4%" }}>
-          Zaten bir hesabınız var mı?{" "}
-          <Text
-            style={{ color: colorPalette.darkRed }}
-            onPress={() => {
-              Linking.openURL("https://www.google.com/intl/tr/account/about/");
-            }}
-          >
-            Giriş Yapın
+        <View style={styles.LoginButton}>
+          <Text>
+            Hesabınız var mı ?
           </Text>
-        </Text>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Login")}
+          >
+            <Text
+              style={{ color: colorPalette.darkRed }}
+            >
+              {"   "}
+              Giriş yapın
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );

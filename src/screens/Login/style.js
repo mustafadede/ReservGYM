@@ -69,6 +69,9 @@ const styles = StyleSheet.create({
     letterSpacing: 0.6,
     marginBottom: "4%",
   },
+  registerButton: {
+    flexDirection: "row", marginTop: "4%", alignItems:"center", justifyContent:"center"
+  }
 });
 
 export default styles;

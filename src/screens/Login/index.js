@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Image, Linking } from "react-native";
+import { View, Text, TextInput, Image, Linking, TouchableOpacity } from "react-native";
 import React from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { LinearButton } from "../../components/";
@@ -6,9 +6,8 @@ import colorPalette from "../../themes/colors";
 import { w, h } from "../../utils/ui/dimension";
 import styles from "./style";
 
+function Login({ navigation }) {
 
-
-function Login() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -42,7 +41,9 @@ function Login() {
           </Text>
         </View>
         <View style={styles.inputButton}>
-          <LinearButton colors={[colorPalette.lightRed, colorPalette.darkRed]} title={"Giriş yap"} />
+          <LinearButton colors={[colorPalette.lightRed, colorPalette.darkRed]} title={"Giriş yap"}
+            onClickHandler={() => navigation.navigate("WelcomePage")}
+          />
         </View>
 
         <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -68,20 +69,24 @@ function Login() {
             }}
           />
         </View>
-        <Image source={require("../../assets/google.png")} style={styles.google} />
-
-        <Text style={{ alignSelf: "center", marginTop: "4%" }}>
-          Bir hesabınız yok mu ?
-          <Text
-            style={{ color: colorPalette.darkRed }}
-            onPress={() => {
-              Linking.openURL("https://www.google.com/intl/tr/account/about/");
-            }}
-          >
-            {" "}
-            Kayıt olun
+        <TouchableOpacity onPress={() => navigation.navigate("AdminMembers")}>
+          <Image source={require("../../assets/google.png")} style={styles.google} />
+        </TouchableOpacity>
+        <View style={styles.registerButton}>
+          <Text>
+            Bir hesabınız yok mu ?
           </Text>
-        </Text>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Register")}
+          >
+            <Text
+              style={{ color: colorPalette.darkRed }}
+            >
+              {"   "}
+              Kayıt olun
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );

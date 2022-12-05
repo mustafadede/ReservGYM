@@ -1,4 +1,4 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { FlatList } from "react-native-gesture-handler";
 import styles from "./style";
@@ -27,10 +27,12 @@ const data = [
   },
 ];
 
-const Reservation = () => {
+const Reservation = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <HeaderBar title={"Rezervasyonlarım"} />
+      <HeaderBar title={"Rezervasyonlarım"} back
+        onClickBackHandler={() => navigation.goBack()}
+      />
       <FlatList
         data={data}
         renderItem={({ item }) => (
@@ -46,9 +48,11 @@ const Reservation = () => {
         )}
         nestedScrollEnabled
       />
-      <View style={styles.addButton}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("TrainerList")}
+        style={styles.addButton}>
         <Icon name={"pluscircle"} color={colorPalette.lightRed} size={60} />
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };
