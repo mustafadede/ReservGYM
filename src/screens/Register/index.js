@@ -69,9 +69,7 @@ function Register({ navigation }) {
           </Text>
         </View>
         <View style={styles.inputButton}>
-          <LinearButton colors={[colorPalette.lightRed, colorPalette.darkRed]} title={"Üye Ol"}
-            onClickHandler={() => navigation.navigate("Login")}
-          />
+          <LinearButton colors={[colorPalette.lightRed, colorPalette.darkRed]} title={"Üye Ol"} onClickHandler={() => navigation.navigate("Login")} />
         </View>
 
         <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -97,17 +95,17 @@ function Register({ navigation }) {
             }}
           />
         </View>
-        <Image source={require("../../assets/google.png")} style={styles.google} />
+        <View style={styles.googleContainer}>
+          <View style={styles.googleContent}>
+            <TouchableOpacity onPress={() => navigation.navigate("AdminMembers")}>
+              <Image style={styles.google} source={require("../../assets/google.png")} />
+            </TouchableOpacity>
+          </View>
+        </View>
         <View style={styles.LoginButton}>
-          <Text>
-            Hesabınız var mı ?
-          </Text>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("Login")}
-          >
-            <Text
-              style={{ color: colorPalette.darkRed }}
-            >
+          <Text>Hesabınız var mı ?</Text>
+          <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+            <Text style={{ color: colorPalette.darkRed }}>
               {"   "}
               Giriş yapın
             </Text>
