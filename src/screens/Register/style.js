@@ -13,14 +13,20 @@ const styles = StyleSheet.create({
     marginTop: "4%",
     alignItems: "center",
   },
-  google: {
-    borderWidth: 1,
-    alignSelf: "center",
-    borderRadius: 15,
-    width: W(15),
-    borderColor: colorPalette.lightgray,
-    resizeMode: "center",
+  googleContainer: {
     marginTop: H(2),
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  googleContent: {
+    borderColor: colorPalette.lightgray,
+    borderWidth: 1,
+    borderRadius: 15,
+  },
+  google: {
+    width: W(15),
+    alignSelf: "center",
+    resizeMode: "center",
   },
   checkRow: {
     flexDirection: "row",
@@ -77,8 +83,11 @@ const styles = StyleSheet.create({
     color: colorPalette.lightgray,
   },
   LoginButton: {
-    flexDirection: "row", marginTop: "4%", alignItems:"center", justifyContent:"center"
-  }
+    flexDirection: "row",
+    marginTop: "4%",
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });
 
 export default styles;

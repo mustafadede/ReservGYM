@@ -7,7 +7,6 @@ import { w, h } from "../../utils/ui/dimension";
 import styles from "./style";
 
 function Login({ navigation }) {
-
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -41,9 +40,7 @@ function Login({ navigation }) {
           </Text>
         </View>
         <View style={styles.inputButton}>
-          <LinearButton colors={[colorPalette.lightRed, colorPalette.darkRed]} title={"Giriş yap"}
-            onClickHandler={() => navigation.navigate("WelcomePage")}
-          />
+          <LinearButton colors={[colorPalette.lightRed, colorPalette.darkRed]} title={"Giriş yap"} onClickHandler={() => navigation.navigate("WelcomePage")} />
         </View>
 
         <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -69,19 +66,17 @@ function Login({ navigation }) {
             }}
           />
         </View>
-        <TouchableOpacity onPress={() => navigation.navigate("AdminMembers")}>
-          <Image source={require("../../assets/google.png")} style={styles.google} />
-        </TouchableOpacity>
+        <View style={styles.googleContainer}>
+          <View style={styles.googleContent}>
+            <TouchableOpacity onPress={() => navigation.navigate("AdminMembers")}>
+              <Image style={styles.google} source={require("../../assets/google.png")} />
+            </TouchableOpacity>
+          </View>
+        </View>
         <View style={styles.registerButton}>
-          <Text>
-            Bir hesabınız yok mu ?
-          </Text>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("Register")}
-          >
-            <Text
-              style={{ color: colorPalette.darkRed }}
-            >
+          <Text>Bir hesabınız yok mu ?</Text>
+          <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+            <Text style={{ color: colorPalette.darkRed }}>
               {"   "}
               Kayıt olun
             </Text>
