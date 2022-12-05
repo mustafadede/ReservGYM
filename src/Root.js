@@ -4,9 +4,12 @@ import Navigation from "./navigation";
 
 const Root = () => {
   return (
-    <View style={{flex:1}}>
-      <Navigation />
-   </View>
+    <>
+      <StatusBar backgroundColor="#fff" barStyle="dark-content" />
+      <View style={{ flex: 1 }}>
+        <Navigation />
+      </View>
+    </>
   );
 };
 
