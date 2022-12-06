@@ -1,0 +1,50 @@
+{
+
+    "project_info": {
+      "project_number": "1080900538360",
+      "project_id": "reservgym-69c3b",
+      "storage_bucket": "reservgym-69c3b.appspot.com"
+    },
+    "client": [
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:1080900538360:android:fc962f5152972ce621900d",
+          "android_client_info": {
+            "package_name": "com.reservgym"
+          }
+        },
+        "oauth_client": [
+          {
+            "client_id": "1080900538360-r065tpd785uv7vl85bce2174enq4pfo0.apps.googleusercontent.com",
+            "client_type": 1,
+            "android_info": {
+              "package_name": "com.reservgym",
+              "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+            }
+          },
+          {
+            "client_id": "1080900538360-cm0bgggg1ncvdo0krlrtk01hlcpdio20.apps.googleusercontent.com",
+            "client_type": 3
+          }
+        ],
+        "api_key": [
+          {
+            "current_key": "AIzaSyDjZBqJBey9BWM4UY54L_W22ohOyCyu7xE"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": [
+              {
+                "client_id": "1080900538360-cm0bgggg1ncvdo0krlrtk01hlcpdio20.apps.googleusercontent.com",
+                "client_type": 3
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "configuration_version": "1"
+    
+  }
+
