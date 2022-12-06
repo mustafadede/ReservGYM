@@ -4,11 +4,14 @@ import React, { useState } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { LinearButton } from "../../components";
 import colorPalette from "../../themes/colors";
+import { handleLogin, handleRegister } from "../../firebase";
 import { w, h } from "../../utils/ui/dimension";
 import styles from "./style";
 
 function Register({ navigation }) {
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <View style={styles.container}>
@@ -20,25 +23,40 @@ function Register({ navigation }) {
         <View style={styles.inputBox}>
           <View style={styles.inputRow}>
             <Icon name="user" size={24} color={colorPalette.lightgray} />
-            <TextInput placeholder="Adınız" style={styles.inputText} />
+            <TextInput placeholder="Adınız" placeholderTextColor={colorPalette.darkgray} style={styles.inputText} />
           </View>
         </View>
         <View style={styles.inputBox}>
           <View style={styles.inputRow}>
             <Icon name="user" size={24} color={colorPalette.lightgray} />
-            <TextInput placeholder="Soyadınız" style={styles.inputText} />
+            <TextInput placeholder="Soyadınız" placeholderTextColor={colorPalette.darkgray} style={styles.inputText} />
           </View>
         </View>
         <View style={styles.inputBox}>
           <View style={styles.inputRow}>
             <Icon name="envelope-o" size={24} color={colorPalette.lightgray} />
-            <TextInput placeholder="Email" style={styles.inputText} />
+            <TextInput
+              placeholder="Email"
+              value={email}
+              autoCapitalize="none"
+              onChangeText={(text) => setEmail(text)}
+              placeholderTextColor={colorPalette.darkgray}
+              style={styles.inputText}
+            />
           </View>
         </View>
         <View style={styles.inputBox}>
           <View style={styles.inputRow}>
             <Icon name="lock" size={30} color={colorPalette.lightgray} />
-            <TextInput placeholder="Şifre" style={styles.inputText} />
+            <TextInput
+              placeholder="Şifre"
+              value={password}
+              secureTextEntry
+              autoCapitalize="none"
+              onChangeText={(text) => setPassword(text)}
+              placeholderTextColor={colorPalette.darkgray}
+              style={styles.inputText}
+            />
             <Icon name="eye-slash" size={24} color={colorPalette.lightgray} />
           </View>
         </View>
@@ -69,7 +87,13 @@ function Register({ navigation }) {
           </Text>
         </View>
         <View style={styles.inputButton}>
-          <LinearButton colors={[colorPalette.lightRed, colorPalette.darkRed]} title={"Üye Ol"} onClickHandler={() => navigation.navigate("Login")} />
+          <LinearButton
+            colors={[colorPalette.lightRed, colorPalette.darkRed]}
+            title={"Üye Ol"}
+            onClickHandler={() => {
+              handleRegister(email, password, navigation);
+            }}
+          />
         </View>
 
         <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -95,13 +119,7 @@ function Register({ navigation }) {
             }}
           />
         </View>
-        <View style={styles.googleContainer}>
-          <View style={styles.googleContent}>
-            <TouchableOpacity onPress={() => navigation.navigate("AdminMembers")}>
-              <Image style={styles.google} source={require("../../assets/google.png")} />
-            </TouchableOpacity>
-          </View>
-        </View>
+
         <View style={styles.LoginButton}>
           <Text>Hesabınız var mı ?</Text>
           <TouchableOpacity onPress={() => navigation.navigate("Login")}>
