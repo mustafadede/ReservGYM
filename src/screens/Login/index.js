@@ -1,12 +1,17 @@
-import { View, Text, TextInput, Image, Linking, TouchableOpacity } from "react-native";
-import React from "react";
+import { View, Text, TextInput, Image, Linking, TouchableOpacity, Button } from "react-native";
+import React, { useState } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { LinearButton } from "../../components/";
 import colorPalette from "../../themes/colors";
 import { w, h } from "../../utils/ui/dimension";
 import styles from "./style";
+import auth from "@react-native-firebase/auth";
+import { handleLogin, handleRegister, onGoogleButtonPress } from "../../firebase";
 
 function Login({ navigation }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -18,13 +23,28 @@ function Login({ navigation }) {
         <View style={styles.inputBox}>
           <View style={styles.inputRow}>
             <Icon name="envelope-o" size={24} color={colorPalette.lightgray} />
-            <TextInput placeholder="Email" style={styles.inputText} />
+            <TextInput
+              placeholder="Email"
+              autoCapitalize="none"
+              placeholderTextColor={colorPalette.darkgray}
+              value={email}
+              onChangeText={(text) => setEmail(text)}
+              style={styles.inputText}
+            />
           </View>
         </View>
         <View style={styles.inputBox}>
           <View style={styles.inputRow}>
             <Icon name="lock" size={30} color={colorPalette.lightgray} />
-            <TextInput secureTextEntry placeholder="Şifre" style={styles.inputText} />
+            <TextInput
+              secureTextEntry
+              placeholderTextColor={colorPalette.darkgray}
+              autoCapitalize="none"
+              placeholder="Şifre"
+              value={password}
+              onChangeText={(text) => setPassword(text)}
+              style={styles.inputText}
+            />
             <Icon name="eye-slash" size={24} color={colorPalette.lightgray} />
           </View>
         </View>
@@ -40,7 +60,13 @@ function Login({ navigation }) {
           </Text>
         </View>
         <View style={styles.inputButton}>
-          <LinearButton colors={[colorPalette.lightRed, colorPalette.darkRed]} title={"Giriş yap"} onClickHandler={() => navigation.navigate("WelcomePage")} />
+          <LinearButton
+            colors={[colorPalette.lightRed, colorPalette.darkRed]}
+            title={"Giriş yap"}
+            onClickHandler={() => {
+              handleLogin(email, password, navigation);
+            }}
+          />
         </View>
 
         <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -68,7 +94,7 @@ function Login({ navigation }) {
         </View>
         <View style={styles.googleContainer}>
           <View style={styles.googleContent}>
-            <TouchableOpacity onPress={() => navigation.navigate("AdminMembers")}>
+            <TouchableOpacity onPress={() => onGoogleButtonPress(navigation)}>
               <Image style={styles.google} source={require("../../assets/google.png")} />
             </TouchableOpacity>
           </View>

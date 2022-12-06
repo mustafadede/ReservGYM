@@ -66,6 +66,7 @@ local.properties
 *.iml
 /android/*
 !/android/README.md
+!/android/app/google-services.json
 
 # Node
 node_modules
