@@ -1643,6 +1643,11 @@
     "@expo/config-plugins" "^5.0.4"
     "plist" "^3.0.5"
 
+"@react-native-firebase/database@^16.4.6":
+  "integrity" "sha512-vBKqANcCSOkfPUM7cNRIuoHm/RnHDOFzXnW1cZKqhHD4mU7t+GtJwB4yHtAvt0v2dU5e4Oqm8MitDPfMAJ6mcw=="
+  "resolved" "https://registry.npmjs.org/@react-native-firebase/database/-/database-16.4.6.tgz"
+  "version" "16.4.6"
+
 "@react-native-google-signin/google-signin@^9.0.0":
   "integrity" "sha512-mty1OjwoiFkzcdZdL4ew6cykIcjneIBfwL6YbiObbI67vLDKwOzOcQCIXvW7d8EZRivEOc6P44W5OSCrZ9yekg=="
   "resolved" "https://registry.npmjs.org/@react-native-google-signin/google-signin/-/google-signin-9.0.0.tgz"
