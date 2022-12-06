@@ -9,8 +9,8 @@ import auth from "@react-native-firebase/auth";
 import { handleLogin, handleRegister, onGoogleButtonPress } from "../../firebase";
 
 function Login({ navigation }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("umut@gmail.com");
+  const [password, setPassword] = useState("123123123");
 
   return (
     <View style={styles.container}>

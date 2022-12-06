@@ -90,4 +90,17 @@ const handleRegister = (email, password, navigation) => {
     });
 };
 
-export { handleLogin, handleRegister, onGoogleButtonPress };
+const addReservation = (trainerName, dateTime, memberName) => {
+  const newReservation = database().ref("Reservations").push();
+  newReservation
+    .set({
+      trainerName: trainerName,
+      dateTime: dateTime,
+      memberName: memberName,
+    })
+    .then(() => {
+      console.log("Reservation added");
+    });
+};
+
+export { handleLogin, handleRegister, onGoogleButtonPress, addReservation };
