@@ -1,52 +1,65 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FlatList } from "react-native-gesture-handler";
 import styles from "./style";
+import { getPosts } from "../../redux/exampleSlicer/exampleSlicer";
+import { useSelector, useDispatch } from "react-redux";
+import { addReservation, readReservation } from "../../firebase";
 import { HeaderBar } from "../../components";
 import Icon from "react-native-vector-icons/AntDesign";
 import colorPalette from "../../themes/colors";
-
-const data = [
-  {
-    trainerName: "Ahmet Hocayla Cycling",
-    date: "12.12.2020",
-    time: "12:00",
-    image: "https://picsum.photos/50",
-  },
-  {
-    trainerName: "Ayşe Hocayla Zumba",
-    date: "12.12.2020",
-    time: "12:00",
-    image: "https://picsum.photos/50",
-  },
-  {
-    trainerName: "Volkan Hocayla “Try Hard” dersi",
-    date: "12.12.2020",
-    time: "12:00",
-    image: "https://picsum.photos/50",
-  },
-];
+import database from "@react-native-firebase/database";
 
 const Reservation = ({ navigation }) => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const readReservation = () => {
+      database()
+        .ref("Reservations")
+        .on("value", (snapshot) => {
+          setData(snapshot.val());
+        });
+    };
+    readReservation();
+  }, []);
+
+  const writeData = Object.keys(data).map((item) => {
+    return (
+      <View style={styles.resrow}>
+        <Image style={styles.images} source={{ uri: "https://picsum.photos/50" }} />
+        <View style={styles.namedate}>
+          <Text style={styles.trainername}>{data[item].trainerName}</Text>
+          <Text style={styles.dateTime}>{data[item].dateTime}</Text>
+        </View>
+      </View>
+    );
+  });
+
   return (
     <View style={styles.container}>
       <HeaderBar title={"Rezervasyonlarım"} back onClickBackHandler={() => navigation.goBack()} />
       <FlatList
-        data={data}
+        data={Object.keys(data)}
+        initialNumToRender={10}
         renderItem={({ item }) => (
           <View style={styles.resrow}>
-            <Image style={styles.images} source={{ uri: item.image }} />
+            <Image style={styles.images} source={{ uri: "https://picsum.photos/50" }} />
             <View style={styles.namedate}>
-              <Text style={styles.trainername}>{item.trainerName}</Text>
-              <Text style={styles.dateTime}>
-                {item.time} - {item.date}
-              </Text>
+              <Text style={styles.trainername}>{data[item].trainerName}</Text>
+              <Text style={styles.dateTime}>{data[item].dateTime}</Text>
             </View>
           </View>
         )}
         nestedScrollEnabled
       />
-      <TouchableOpacity onPress={() => navigation.navigate("TrainerList")} style={styles.addButton}>
+      <TouchableOpacity
+        onPress={() => {
+          // navigation.navigate("TrainerList");
+          addReservation("Sena Hoca", "2021-05-05 12:00", "Aleyna");
+        }}
+        style={styles.addButton}
+      >
         <Icon name={"pluscircle"} color={colorPalette.lightRed} size={60} />
       </TouchableOpacity>
     </View>
