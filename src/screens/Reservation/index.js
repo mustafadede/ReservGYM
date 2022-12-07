@@ -24,39 +24,29 @@ const Reservation = ({ navigation }) => {
     readReservation();
   }, []);
 
-  const writeData = Object.keys(data).map((item) => {
-    return (
-      <View style={styles.resrow}>
-        <Image style={styles.images} source={{ uri: "https://picsum.photos/50" }} />
-        <View style={styles.namedate}>
-          <Text style={styles.trainername}>{data[item].trainerName}</Text>
-          <Text style={styles.dateTime}>{data[item].dateTime}</Text>
-        </View>
-      </View>
-    );
-  });
-
   return (
     <View style={styles.container}>
       <HeaderBar title={"Rezervasyonlarım"} back onClickBackHandler={() => navigation.goBack()} />
-      <FlatList
-        data={Object.keys(data)}
-        initialNumToRender={10}
-        renderItem={({ item }) => (
-          <View style={styles.resrow}>
-            <Image style={styles.images} source={{ uri: "https://picsum.photos/50" }} />
-            <View style={styles.namedate}>
-              <Text style={styles.trainername}>{data[item].trainerName}</Text>
-              <Text style={styles.dateTime}>{data[item].dateTime}</Text>
+      {data && (
+        <FlatList
+          data={Object.keys(data)}
+          initialNumToRender={10}
+          renderItem={({ item }) => (
+            <View style={styles.resrow}>
+              <Image style={styles.images} source={{ uri: "https://picsum.photos/50" }} />
+              <View style={styles.namedate}>
+                <Text style={styles.trainername}>{data[item].trainerName}</Text>
+                <Text style={styles.dateTime}>{data[item].dateTime}</Text>
+              </View>
             </View>
-          </View>
-        )}
-        nestedScrollEnabled
-      />
+          )}
+          nestedScrollEnabled
+        />
+      )}
       <TouchableOpacity
         onPress={() => {
-          // navigation.navigate("TrainerList");
-          addReservation("Sena Hoca", "2021-05-05 12:00", "Aleyna");
+          navigation.navigate("TrainerList");
+          // addReservation("Sena Hoca", "2021-05-05 12:00", "Aleyna");
         }}
         style={styles.addButton}
       >
