@@ -2,10 +2,16 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import styles from "./style";
 
-const TrainerCard = ({ title, subTitle, handlePresentModalPress }) => {
+const TrainerCard = ({ title, subTitle, handlePresentModalPress, setReservation }) => {
   return (
     <>
-      <TouchableOpacity style={styles.trainerCardWrapper} onPress={handlePresentModalPress}>
+      <TouchableOpacity
+        style={styles.trainerCardWrapper}
+        onPress={() => {
+          setReservation();
+          handlePresentModalPress();
+        }}
+      >
         <Image
           source={{
             uri: "https://avatars.githubusercontent.com/u/100048051?v=4",
