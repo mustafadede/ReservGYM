@@ -54,7 +54,7 @@ const TrainerList = ({ navigation }) => {
           subTitle="Zumba"
           handlePresentModalPress={handlePresentModalPress}
           setReservation={() => {
-            setReservation({ trainer: "Ayşe Hoca" });
+            setReservation({ trainer: "Ayşe Hoca", dateTime: date.toLocaleString() });
           }}
         />
         <TrainerCard
@@ -62,7 +62,7 @@ const TrainerList = ({ navigation }) => {
           subTitle="Try Hard"
           handlePresentModalPress={handlePresentModalPress}
           setReservation={() => {
-            setReservation({ trainer: "Volkan Hoca" });
+            setReservation({ trainer: "Volkan Hoca", dateTime: date.toLocaleString() });
           }}
         />
 
