@@ -11,10 +11,11 @@ export const exampleSlicer = createSlice({
     appName: "ReservGYM",
     entities: [],
     loading: false,
+    userId: "",
   },
   reducers: {
-    changeName: (state, action) => {
-      state.entities.push(action.payload);
+    getUserID: (state, action) => {
+      state.userId = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -33,6 +34,6 @@ export const exampleSlicer = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { changeName } = exampleSlicer.actions;
+export const { getUserID } = exampleSlicer.actions;
 
 export default exampleSlicer.reducer;

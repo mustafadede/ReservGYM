@@ -1,5 +1,6 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import React, { useEffect, useState } from "react";
+import { useIsFocused } from "@react-navigation/native";
 import { FlatList } from "react-native-gesture-handler";
 import styles from "./style";
 import { getPosts } from "../../redux/exampleSlicer/exampleSlicer";
@@ -12,17 +13,23 @@ import database from "@react-native-firebase/database";
 
 const Reservation = ({ navigation }) => {
   const [data, setData] = useState([]);
+  const { userId } = useSelector((state) => state.app);
+  const isFocused = useIsFocused();
 
   useEffect(() => {
     const readReservation = () => {
       database()
         .ref("Reservations")
-        .on("value", (snapshot) => {
+        .orderByChild("memberName")
+        .equalTo(userId)
+        .once("value", (snapshot) => {
           setData(snapshot.val());
         });
     };
-    readReservation();
-  }, []);
+    if (isFocused) {
+      readReservation();
+    }
+  }, [isFocused]);
 
   return (
     <View style={styles.container}>
