@@ -2,7 +2,6 @@ import auth from "@react-native-firebase/auth";
 import { GoogleSignin, statusCodes } from "@react-native-google-signin/google-signin";
 import { Alert } from "react-native";
 import database from "@react-native-firebase/database";
-import md5 from "md5";
 import { useSelector, useDispatch } from "react-redux";
 import { getUserID } from "../redux/exampleSlicer/exampleSlicer";
 
