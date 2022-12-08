@@ -1,12 +1,12 @@
 import { View, Text, Alert } from "react-native";
-import React, { useCallback, useMemo, useRef, useState } from "react";
+import React, { useCallback, useMemo, useRef, useState, useEffect } from "react";
 import { BottomSheetModal, BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import DatePicker from "react-native-date-picker";
 import { HeaderBar, LinearButton, TrainerCard } from "../../components/";
 import colorPalette from "../../themes/colors";
 import styles from "./style";
-import { useEffect } from "react";
 import { current } from "@reduxjs/toolkit";
+import { useSelector } from "react-redux";
 import { addReservation } from "../../firebase";
 import database from "@react-native-firebase/database";
 
@@ -15,28 +15,42 @@ const TrainerList = ({ navigation }) => {
   const [reservation, setReservation] = useState({ trainer: "", dateTime: "" });
   const [done, setDone] = useState(false);
 
+  const { userId } = useSelector((state) => state.app);
+
   const reservationAddCheck = () => {
-    setDone(true);
-    if (done) {
-      let rootRef = database().ref();
-      rootRef
-        .child("Reservations")
-        .orderByChild("dateTime")
-        .equalTo(date.toLocaleString().slice(0, -3))
-        .once("value")
-        .then((snapshot) => {
-          if (snapshot.val()) {
-            Alert.alert("Uyarı", "Başka bir tarih seç", [{ text: "OK", onPress: () => navigation.navigate("Reservation") }]);
+    let rootRef = database().ref();
+    rootRef
+      .child("Reservations")
+      .orderByChild("dateTime")
+      .equalTo(date.toLocaleString().slice(0, -3))
+      .once("value")
+      .then((snapshot) => {
+        if (snapshot.val()) {
+          const result = Object.keys(snapshot.val()).map((key) => snapshot.val()[key]);
+
+          console.log(result);
+
+          if (result[0].memberName === userId) {
+            Alert.alert("Uyarı", "Zaten Aynı Tarihe Bir Randevunuz Bulunmaktadır.", [{ text: "OK", onPress: () => navigation.navigate("Reservation") }]);
           } else {
-            addReservation(reservation.trainer, date.toLocaleString().slice(0, -3), "userName");
-            // setReservation({ trainer: reservation.trainer, dateTime: date.toLocaleString() });
-            Alert.alert("Rezervasyon Başarıyla Oluşturuldu", `${date.toLocaleString().slice(0, -3)} tarihine rezervasyonunuz oluşturulmuştur`, [
-              { text: "OK", onPress: () => navigation.navigate("Reservation") },
-            ]);
+            if (result[0].trainerName === reservation.trainer) {
+              Alert.alert("Uyarı", "Bu tarih ve saate başka bir kişi rezervasyon yapmış", [{ text: "OK", onPress: () => navigation.navigate("Reservation") }]);
+            } else {
+              addReservation(reservation.trainer, date.toLocaleString().slice(0, -3), userId);
+              // setReservation({ trainer: reservation.trainer, dateTime: date.toLocaleString() });
+              Alert.alert("Rezervasyon Başarıyla Oluşturuldu", `${date.toLocaleString().slice(0, -3)} tarihine rezervasyonunuz oluşturulmuştur`, [
+                { text: "OK", onPress: () => navigation.navigate("Reservation") },
+              ]);
+            }
           }
-          setDone(false);
-        });
-    }
+        } else {
+          addReservation(reservation.trainer, date.toLocaleString().slice(0, -3), userId);
+          // setReservation({ trainer: reservation.trainer, dateTime: date.toLocaleString() });
+          Alert.alert("Rezervasyon Başarıyla Oluşturuldu", `${date.toLocaleString().slice(0, -3)} tarihine rezervasyonunuz oluşturulmuştur`, [
+            { text: "OK", onPress: () => navigation.navigate("Reservation") },
+          ]);
+        }
+      });
   };
 
   const bottomSheetModalRef = useRef(null);
@@ -51,9 +65,7 @@ const TrainerList = ({ navigation }) => {
   const handleSheetChanges = useCallback((index) => {
     console.log("handleSheetChanges", index);
   }, []);
-  useEffect(() => {
-    reservationAddCheck();
-  }, []);
+
   return (
     <>
       <HeaderBar title={"Hoca Listesi"} back onClickBackHandler={() => navigation.goBack()} />

@@ -2,6 +2,9 @@ import auth from "@react-native-firebase/auth";
 import { GoogleSignin, statusCodes } from "@react-native-google-signin/google-signin";
 import { Alert } from "react-native";
 import database from "@react-native-firebase/database";
+import md5 from "md5";
+import { useSelector, useDispatch } from "react-redux";
+import { getUserID } from "../redux/exampleSlicer/exampleSlicer";
 
 GoogleSignin.configure({
   scopes: ["https://www.googleapis.com/auth/drive.readonly"], // what API you want to access on behalf of the user, default is email and profile
@@ -52,7 +55,7 @@ const handleLogin = (email, password, navigation) => {
   auth()
     .signInWithEmailAndPassword(email, password)
     .then(() => {
-      navigation.navigate("WelcomePage");
+      navigation.navigate("WelcomePage", { userid: auth().currentUser.uid });
     })
     .catch((error) => {
       if (error.code === "auth/user-not-found") {
@@ -77,8 +80,16 @@ const handleRegister = (email, password, navigation) => {
   auth()
     .createUserWithEmailAndPassword(email, password)
     .then(() => {
-      alert("Kayıt Başarılı! Giriş Yapın !");
-      navigation.navigate("Login");
+      const newUser = database().ref("Users").push();
+      newUser
+        .set({
+          email: email,
+          userid: auth().currentUser.uid,
+        })
+        .then(() => {
+          console.log("User Registered to firebase!");
+          navigation.navigate("Login");
+        });
     })
     .catch((error) => {
       if (error.code === "auth/email-already-in-use") {

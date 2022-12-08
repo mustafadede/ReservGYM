@@ -22,6 +22,7 @@
     "@react-navigation/native-stack": "^6.9.4",
     "@reduxjs/toolkit": "^1.9.1",
     "lottie-react-native": "^5.1.4",
+    "md5": "^2.3.0",
     "react": "18.1.0",
     "react-native": "0.70.6",
     "react-native-app-intro-slider": "^4.0.4",
