@@ -11,10 +11,7 @@ import { spacing } from "../../configs";
 const MemberProfile = ({ navigation }) => {
   return (
     <>
-      <HeaderBar title={"Member Profile"} exit  
-      onClickHandler={() => navigation.navigate("Login")} 
-      onClickBackHandler={() => navigation.goBack()} 
-      />
+      <HeaderBar title={"Member Profile"} exit onClickHandler={() => navigation.navigate("Login")} onClickBackHandler={() => navigation.goBack()} />
       <View style={styles.main}>
         <Spacing spacing={spacing.xs} />
         <Member style={styles.member} />
@@ -22,21 +19,25 @@ const MemberProfile = ({ navigation }) => {
         <MemberInfo />
         <View style={styles.buttonLinearContainer}>
           <View style={styles.buttonLinear}>
-            <LinearButton colors={[colorPalette.lightRed, colorPalette.darkRed]} title={"Rezervasyonlarım"}
+            <LinearButton
+              colors={[colorPalette.lightRed, colorPalette.darkRed]}
+              title={"Rezervasyonlarım"}
               onClickHandler={() => navigation.navigate("Reservation")}
             />
           </View>
           <View style={styles.buttonLinear}>
-            <LinearButton colors={[colorPalette.lightRed, colorPalette.darkRed]} title={"Ödeme Yap"}
+            <LinearButton
+              colors={[colorPalette.lightRed, colorPalette.darkRed]}
+              title={"Ödeme Yap"}
               onClickHandler={() => navigation.navigate("PaymentScreen")}
             />
           </View>
         </View>
-        <TouchableOpacity onPress={() =>  navigation.navigate("QrCodeScreen")}>
+        <TouchableOpacity onPress={() => navigation.navigate("QrCodeScreen")}>
           <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} colors={[colorPalette.lightRed, colorPalette.darkRed]} style={styles.buttonCircular}>
-              <Text style={{ color: colorPalette.white, fontWeight: "bold" }}>
-                <Icon name="camera" size={30} />
-              </Text>
+            <Text style={{ color: colorPalette.white, fontWeight: "bold" }}>
+              <Icon name="camera" size={30} />
+            </Text>
           </LinearGradient>
         </TouchableOpacity>
       </View>

@@ -2,8 +2,6 @@ import auth from "@react-native-firebase/auth";
 import { GoogleSignin, statusCodes } from "@react-native-google-signin/google-signin";
 import { Alert } from "react-native";
 import database from "@react-native-firebase/database";
-import { useSelector, useDispatch } from "react-redux";
-import { getUserID } from "../redux/exampleSlicer/exampleSlicer";
 
 GoogleSignin.configure({
   scopes: ["https://www.googleapis.com/auth/drive.readonly"], // what API you want to access on behalf of the user, default is email and profile
@@ -26,8 +24,8 @@ async function onGoogleButtonPress(navigation) {
   try {
     await GoogleSignin.hasPlayServices();
     const userInfo = await GoogleSignin.signIn();
-
     this.setState({ userInfo });
+
     navigation.navigate("WelcomePage");
   } catch (error) {
     if (error.code === statusCodes.SIGN_IN_CANCELLED) {
@@ -75,7 +73,7 @@ const handleLogin = (email, password, navigation) => {
 const emailAlreadyInUse = () => Alert.alert("Dikkat", "E-mail adresi başka bir kullanıcı tarafından kullanılıyor !", [, { text: "OK" }]);
 const weakPassword = () => Alert.alert("Dikkat", "Zayıf Şifre ! En Az 8 Karakter Olmalıdır !", [, { text: "OK" }]);
 
-const handleRegister = (email, password, navigation) => {
+const handleRegister = (email, password, names, surname, navigation) => {
   auth()
     .createUserWithEmailAndPassword(email, password)
     .then(() => {
@@ -84,6 +82,11 @@ const handleRegister = (email, password, navigation) => {
         .set({
           email: email,
           userid: auth().currentUser.uid,
+          name: names,
+          surname: surname,
+          weight: "",
+          age: "",
+          status: false,
         })
         .then(() => {
           console.log("User Registered to firebase!");
