@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { LinearButton } from "../../components";
 import colorPalette from "../../themes/colors";
-import { handleLogin, handleRegister } from "../../firebase";
+import { handleRegister } from "../../firebase";
 import { w, h } from "../../utils/ui/dimension";
 import styles from "./style";
 
@@ -12,6 +12,8 @@ function Register({ navigation }) {
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [names, setNames] = useState("");
+  const [surname, setSurname] = useState("");
 
   return (
     <View style={styles.container}>
@@ -23,13 +25,25 @@ function Register({ navigation }) {
         <View style={styles.inputBox}>
           <View style={styles.inputRow}>
             <Icon name="user" size={24} color={colorPalette.lightgray} />
-            <TextInput placeholder="Adınız" placeholderTextColor={colorPalette.darkgray} style={styles.inputText} />
+            <TextInput
+              placeholder="Adınız"
+              value={names}
+              onChangeText={(text) => setNames(text)}
+              placeholderTextColor={colorPalette.darkgray}
+              style={styles.inputText}
+            />
           </View>
         </View>
         <View style={styles.inputBox}>
           <View style={styles.inputRow}>
             <Icon name="user" size={24} color={colorPalette.lightgray} />
-            <TextInput placeholder="Soyadınız" placeholderTextColor={colorPalette.darkgray} style={styles.inputText} />
+            <TextInput
+              placeholder="Soyadınız"
+              value={surname}
+              onChangeText={(text) => setSurname(text)}
+              placeholderTextColor={colorPalette.darkgray}
+              style={styles.inputText}
+            />
           </View>
         </View>
         <View style={styles.inputBox}>
@@ -38,8 +52,8 @@ function Register({ navigation }) {
             <TextInput
               placeholder="Email"
               value={email}
-              autoCapitalize="none"
               onChangeText={(text) => setEmail(text)}
+              autoCapitalize="none"
               placeholderTextColor={colorPalette.darkgray}
               style={styles.inputText}
             />
@@ -91,7 +105,7 @@ function Register({ navigation }) {
             colors={[colorPalette.lightRed, colorPalette.darkRed]}
             title={"Üye Ol"}
             onClickHandler={() => {
-              handleRegister(email, password, navigation);
+              handleRegister(email, password, names, surname, navigation);
             }}
           />
         </View>

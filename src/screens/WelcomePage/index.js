@@ -1,14 +1,15 @@
 import React, { useEffect } from "react";
 import { View, Text, Image } from "react-native";
 import styles from "./style";
-import { HeaderBar, LinearButton } from "../../components/";
+import { LinearButton } from "../../components/";
 import colorPalette from "../../themes/colors";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getUserID } from "../../redux/exampleSlicer/exampleSlicer";
-
 const WelcomePage = ({ navigation, route }) => {
   const { userid } = route.params;
   const dispatch = useDispatch();
+
+  dispatch(getUserID(userid));
 
   return (
     <View style={styles.container}>

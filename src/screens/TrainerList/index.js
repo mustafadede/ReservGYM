@@ -13,8 +13,6 @@ import database from "@react-native-firebase/database";
 const TrainerList = ({ navigation }) => {
   const [date, setDate] = useState(new Date());
   const [reservation, setReservation] = useState({ trainer: "", dateTime: "" });
-  const [done, setDone] = useState(false);
-
   const { userId } = useSelector((state) => state.app);
 
   const reservationAddCheck = () => {
@@ -27,13 +25,11 @@ const TrainerList = ({ navigation }) => {
       .then((snapshot) => {
         if (snapshot.val()) {
           const result = Object.keys(snapshot.val()).map((key) => snapshot.val()[key]);
-
           console.log(result);
-
-          if (result[0].memberName === userId) {
+          if (result.some((item) => item.memberName === userId)) {
             Alert.alert("Uyarı", "Zaten Aynı Tarihe Bir Randevunuz Bulunmaktadır.", [{ text: "OK", onPress: () => navigation.navigate("Reservation") }]);
           } else {
-            if (result[0].trainerName === reservation.trainer) {
+            if (result.some((item) => item.trainerName === reservation.trainer)) {
               Alert.alert("Uyarı", "Bu tarih ve saate başka bir kişi rezervasyon yapmış", [{ text: "OK", onPress: () => navigation.navigate("Reservation") }]);
             } else {
               addReservation(reservation.trainer, date.toLocaleString().slice(0, -3), userId);
