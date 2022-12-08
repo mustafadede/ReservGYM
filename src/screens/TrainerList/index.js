@@ -96,7 +96,7 @@ const TrainerList = ({ navigation }) => {
         />
 
         <BottomSheetModalProvider>
-          <BottomSheetModal ref={bottomSheetModalRef} index={0} snapPoints={snapPoints} onChange={handleSheetChanges}>
+          <BottomSheetModal ref={bottomSheetModalRef} index={0} snapPoints={snapPoints} onChange={handleSheetChanges} enablePanDownToClose={true}>
             <View style={styles.contentContainer}>
               <Text style={styles.contentTitle}>Tarih Seç</Text>
               <DatePicker

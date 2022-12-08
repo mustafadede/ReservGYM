@@ -1,6 +1,6 @@
 import React from "react";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { AdminMember, AdminMembers, Login, MemberProfile, PaymentScreen, Register, Reservation, TrainerList, WelcomePage, } from "../screens";
+import { AdminMember, AdminMembers, Login, MemberProfile, PaymentScreen, Register, Reservation, TrainerList, WelcomePage, BarcodeScreenExample } from "../screens";
 import { NavigationContainer } from "@react-navigation/native";
 
 const Stack = createNativeStackNavigator();
@@ -21,6 +21,7 @@ const Navigation = () => {
                 <Stack.Screen name="PaymentScreen" component={PaymentScreen} />
                 <Stack.Screen name="TrainerList" component={TrainerList} />
                 <Stack.Screen name="WelcomePage" component={WelcomePage} />
+                <Stack.Screen name="QrCodeScreen" component={BarcodeScreenExample} />
             </Stack.Navigator>
         </NavigationContainer>
     );

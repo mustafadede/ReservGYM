@@ -32,7 +32,7 @@ const MemberProfile = ({ navigation }) => {
             />
           </View>
         </View>
-        <TouchableOpacity onPress={null}>
+        <TouchableOpacity onPress={() =>  navigation.navigate("QrCodeScreen")}>
           <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} colors={[colorPalette.lightRed, colorPalette.darkRed]} style={styles.buttonCircular}>
               <Text style={{ color: colorPalette.white, fontWeight: "bold" }}>
                 <Icon name="camera" size={30} />
