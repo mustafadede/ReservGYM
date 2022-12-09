@@ -48,11 +48,19 @@ const passwordWrong = () => Alert.alert("Dikkat", "Şifre Hatalı!", [, { text: 
 const emailWrong = () => Alert.alert("Dikkat", "Email Adresiniz Hatalı !!", [, { text: "OK" }]);
 const tooManyRequest = () => Alert.alert("Dikkat", "Çok Fazla Giriş Yapmayı Denediniz! 5 Dakika Sonra Tekrar Deneyiniz!", [, { text: "OK" }]);
 
+const validationAdminPanel = [
+  "tayfun111423@gmail.com"
+]
+
 const handleLogin = (email, password, navigation) => {
   auth()
     .signInWithEmailAndPassword(email, password)
     .then(() => {
-      navigation.navigate("WelcomePage", { userid: auth().currentUser.uid });
+      if (validationAdminPanel.some((item) => item === email)) {
+        navigation.navigate("AdminMembers", { userid: auth().currentUser.uid });
+      } else {
+        navigation.navigate("WelcomePage", { userid: auth().currentUser.uid });
+      }
     })
     .catch((error) => {
       if (error.code === "auth/user-not-found") {
@@ -87,6 +95,7 @@ const handleRegister = (email, password, names, surname, navigation) => {
           weight: "",
           age: "",
           status: false,
+          allowedProfileTime: 0,
         })
         .then(() => {
           console.log("User Registered to firebase!");

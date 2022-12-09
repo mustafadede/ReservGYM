@@ -5,7 +5,6 @@ import { W, H } from "../../utils/ui/dimension";
 
 export const styles = StyleSheet.create({
   memberProfile: {
-    width: W(90),
     height: H(20),
     alignItems: "center",
     justifyContent: "space-between",

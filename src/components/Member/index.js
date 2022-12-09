@@ -1,8 +1,11 @@
 import React from 'react';
 import { Text, View, Image } from 'react-native';
+
 import { styles } from './styles';
 
-const Member = () => {
+const Member = ({ adminAllowedProfilTimes, memberName, adminMemberNames,
+    memberAllowedTime }) => {
+
     return (
         <View style={styles.member}>
             <View>
@@ -12,8 +15,15 @@ const Member = () => {
                 />
             </View>
             <View style={styles.memberInfo}>
-                <Text style={styles.memberName}>Ahmet Alioğlu</Text>
-                <Text style={styles.memberDetails}>Üyelik Geçerlilik Süresi: 2 Ay</Text>
+                <Text style={styles.memberName}>
+                    {adminMemberNames === undefined ? memberName : adminMemberNames}
+                </Text>
+                <Text style={styles.memberDetails}>
+                    Üyelik Geçerlilik Süresi: {
+                        adminAllowedProfilTimes === undefined ?
+                            memberAllowedTime : adminAllowedProfilTimes
+                    } Ay
+                </Text>
             </View>
         </View>
     );

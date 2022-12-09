@@ -1,5 +1,6 @@
-import { View, TextInput, Image, KeyboardAvoidingView } from "react-native";
 import React from "react";
+import { View, TextInput, Image, KeyboardAvoidingView } from "react-native";
+
 import styles from "./style";
 import { LinearButton, HeaderBar } from "../../components/";
 import colorPalette from "../../themes/colors";

@@ -8,4 +8,5 @@ import PaymentScreen from "./PaymentScreen";
 import Reservation from "./Reservation";
 import MemberProfile from "./MemberProfile";
 import BarcodeScreenExample from "./QrCodeScreen";
+
 export { WelcomePage, Login, Register, TrainerList, AdminMember, AdminMembers, PaymentScreen, Reservation, MemberProfile, BarcodeScreenExample };

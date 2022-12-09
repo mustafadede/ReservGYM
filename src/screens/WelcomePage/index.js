@@ -1,10 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { View, Text, Image } from "react-native";
+
+import { useDispatch } from "react-redux";
+import { getUserID } from "../../redux/exampleSlicer/exampleSlicer";
+
 import styles from "./style";
 import { LinearButton } from "../../components/";
 import colorPalette from "../../themes/colors";
-import { useDispatch } from "react-redux";
-import { getUserID } from "../../redux/exampleSlicer/exampleSlicer";
+
 const WelcomePage = ({ navigation, route }) => {
   const { userid } = route.params;
   const dispatch = useDispatch();

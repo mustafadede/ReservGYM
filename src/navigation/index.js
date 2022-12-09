@@ -1,7 +1,9 @@
 import React from "react";
+
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { AdminMember, AdminMembers, Login, MemberProfile, PaymentScreen, Register, Reservation, TrainerList, WelcomePage, BarcodeScreenExample } from "../screens";
 import { NavigationContainer } from "@react-navigation/native";
+
+import { AdminMember, AdminMembers, Login, MemberProfile, PaymentScreen, Register, Reservation, TrainerList, WelcomePage, BarcodeScreenExample } from "../screens";
 
 const Stack = createNativeStackNavigator();
 
