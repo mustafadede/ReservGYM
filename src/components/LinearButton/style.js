@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 40,
     padding: 15,
-    width: W(80),
+    width: W(83),
     height: H(8),
     fontWeight: fontSize.bold,
   },

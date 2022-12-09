@@ -1,9 +1,10 @@
 import React from "react";
 import { Text, View, TextInput } from "react-native";
-import colorPalette from "../../themes/colors";
-import { styles } from "./styles";
 
-const MemberInfo = () => {
+import { styles } from "./styles";
+import colorPalette from "../../themes/colors";
+
+const MemberInfo = ({ status }) => {
   return (
     <View style={styles.memberProfile}>
       <View style={styles.memberProfileDetails}>
@@ -21,7 +22,7 @@ const MemberInfo = () => {
         </View>
       </View>
       <View style={styles.memberStatus}>
-        <Text style={styles.memberStatusInfo}>Aktif</Text>
+        <Text style={styles.memberStatusInfo}>{status === true ? "Aktif" : "Pasif"}</Text>
         <Text style={styles.memberStatusTitle}>Üyelik Geçerlilik Durumu</Text>
       </View>
     </View>

@@ -1,15 +1,15 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
 import React, { useEffect, useState } from "react";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import { useIsFocused } from "@react-navigation/native";
 import { FlatList } from "react-native-gesture-handler";
-import styles from "./style";
-import { getPosts } from "../../redux/exampleSlicer/exampleSlicer";
-import { useSelector, useDispatch } from "react-redux";
-import { addReservation, readReservation } from "../../firebase";
-import { HeaderBar } from "../../components";
-import Icon from "react-native-vector-icons/AntDesign";
-import colorPalette from "../../themes/colors";
+
 import database from "@react-native-firebase/database";
+import { useSelector } from "react-redux";
+import Icon from "react-native-vector-icons/AntDesign";
+
+import styles from "./style";
+import { HeaderBar } from "../../components";
+import colorPalette from "../../themes/colors";
 
 const Reservation = ({ navigation }) => {
   const [data, setData] = useState([]);

@@ -1,5 +1,6 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
+import { View, Text, Image, TouchableOpacity } from "react-native";
+
 import styles from "./style";
 
 const TrainerCard = ({ title, subTitle, handlePresentModalPress, setReservation }) => {

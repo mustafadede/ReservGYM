@@ -1,17 +1,20 @@
 import React from "react";
 import { View, Text } from "react-native";
+
 import { HeaderBar, LinearButton, Member, MemberInfo, Spacing } from "../../components";
 import colorPalette from "../../themes/colors";
 import { spacing } from "../../configs/";
 import { styles } from "./style";
 
 const AdminMember = ({ navigation }) => {
+
   return (
     <>
       <HeaderBar title={"Üye"} back
         onClickBackHandler={() => navigation.goBack()}
       />
       <View style={styles.main}>
+        <Spacing spacing={spacing.xxs} />
         <Member />
         <Spacing spacing={spacing.xs} />
         <MemberInfo />

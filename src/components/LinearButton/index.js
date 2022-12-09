@@ -1,9 +1,8 @@
 import React from "react";
 import { Text, TouchableOpacity } from "react-native";
-import LinearGradient from "react-native-linear-gradient";
-import colorPalette from "../../themes/colors";
 
-import { W } from "../../utils/ui/dimension";
+import LinearGradient from "react-native-linear-gradient";
+
 import styles from "./style";
 
 const LinearButton = (props) => {

@@ -1,7 +1,9 @@
 import { View, Text } from "react-native";
-import styles from "./style";
+
 import Icon from "react-native-vector-icons/Ionicons";
 import Lottie from "lottie-react-native";
+
+import styles from "./style";
 import colorPalette from "../../themes/colors";
 
 const _renderItem = ({ item }) => {

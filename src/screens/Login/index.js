@@ -1,16 +1,17 @@
-import { View, Text, TextInput, Image, Linking, TouchableOpacity, Button } from "react-native";
 import React, { useState } from "react";
+import { View, Text, TextInput, Image, Linking, TouchableOpacity, Button } from "react-native";
+
+import { handleLogin, onGoogleButtonPress } from "../../firebase";
 import Icon from "react-native-vector-icons/FontAwesome";
+
 import { LinearButton } from "../../components/";
 import colorPalette from "../../themes/colors";
-import { w, h } from "../../utils/ui/dimension";
+import { w } from "../../utils/ui/dimension";
 import styles from "./style";
-import auth from "@react-native-firebase/auth";
-import { handleLogin, handleRegister, onGoogleButtonPress } from "../../firebase";
 
 function Login({ navigation }) {
-  const [email, setEmail] = useState("merve@gmail.com");
-  const [password, setPassword] = useState("123123");
+  const [email, setEmail] = useState("tayfun111423@gmail.com");
+  const [password, setPassword] = useState("tayfun97");
 
   return (
     <View style={styles.container}>

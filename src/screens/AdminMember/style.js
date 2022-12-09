@@ -10,7 +10,6 @@ export const styles = StyleSheet.create({
   paymentList: {
     alignItems: "center",
     marginTop: spacing.m,
-    width: W(80),
     height: H(25),
     padding: spacing.xs,
     backgroundColor: colorPalette.white,

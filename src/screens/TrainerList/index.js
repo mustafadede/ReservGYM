@@ -1,14 +1,15 @@
+import React, { useCallback, useMemo, useRef, useState } from "react";
 import { View, Text, Alert } from "react-native";
-import React, { useCallback, useMemo, useRef, useState, useEffect } from "react";
+
+import { useSelector } from "react-redux";
 import { BottomSheetModal, BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import DatePicker from "react-native-date-picker";
+import { addReservation } from "../../firebase";
+import database from "@react-native-firebase/database";
+
 import { HeaderBar, LinearButton, TrainerCard } from "../../components/";
 import colorPalette from "../../themes/colors";
 import styles from "./style";
-import { current } from "@reduxjs/toolkit";
-import { useSelector } from "react-redux";
-import { addReservation } from "../../firebase";
-import database from "@react-native-firebase/database";
 
 const TrainerList = ({ navigation }) => {
   const [date, setDate] = useState(new Date());

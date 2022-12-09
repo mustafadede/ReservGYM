@@ -1,8 +1,10 @@
-import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
-import styles from "./style";
+import { View, Text, TouchableOpacity } from "react-native";
+
 import Icon from "react-native-vector-icons/Ionicons";
 import colorPalette from "../../themes/colors";
+
+import styles from "./style";
 
 const HeaderBar = (props) => {
 

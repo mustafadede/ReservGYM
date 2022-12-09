@@ -1,7 +1,10 @@
-import { CameraScreen } from "react-native-camera-kit";
 import React from "react";
 import { Alert } from "react-native";
+
+import { CameraScreen } from "react-native-camera-kit";
+
 const BarcodeScreenExample = ({navigation}) => {
+
     return (
     <CameraScreen
       scanBarcode={true}

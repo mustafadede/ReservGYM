@@ -1,22 +1,46 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import { Member, MemberInfo, Spacing, HeaderBar } from "../../components";
-import styles from "./style";
-import { LinearButton } from "../../components/";
-import colorPalette from "../../themes/colors";
+
+import { useSelector } from "react-redux";
 import Icon from "react-native-vector-icons/FontAwesome";
 import LinearGradient from "react-native-linear-gradient";
+import database from "@react-native-firebase/database";
+
 import { spacing } from "../../configs";
+import { Member, MemberInfo, Spacing, HeaderBar, LinearButton } from "../../components";
+import styles from "./style";
+import colorPalette from "../../themes/colors";
 
 const MemberProfile = ({ navigation }) => {
+
+  const { userId } = useSelector((state) => state.app);
+
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    let rootRef = database().ref();
+    rootRef
+      .child("Users")
+      .orderByChild("userid")
+      .equalTo(userId)
+      .once("value")
+      .then((snapshot) => {
+        const key = Object.keys(snapshot.val())[0];
+        setUser(snapshot.val()[key]);
+      });
+  }, []);
+
   return (
     <>
       <HeaderBar title={"Member Profile"} exit onClickHandler={() => navigation.navigate("Login")} onClickBackHandler={() => navigation.goBack()} />
       <View style={styles.main}>
         <Spacing spacing={spacing.xs} />
-        <Member style={styles.member} />
+        <Member style={styles.member}
+          memberName={user.name + " " + user.surname}
+          memberAllowedTime={user.allowedProfileTime}
+        />
         <Spacing spacing={spacing.s} />
-        <MemberInfo />
+        <MemberInfo status={user.status} />
         <View style={styles.buttonLinearContainer}>
           <View style={styles.buttonLinear}>
             <LinearButton

@@ -1,11 +1,13 @@
-import { View, Text, TextInput, Image, Linking, TouchableOpacity } from "react-native";
-import CheckBox from "@react-native-community/checkbox";
 import React, { useState } from "react";
+import { View, Text, TextInput, Image, Linking, TouchableOpacity } from "react-native";
+
+import CheckBox from "@react-native-community/checkbox";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { handleRegister } from "../../firebase";
+
 import { LinearButton } from "../../components";
 import colorPalette from "../../themes/colors";
-import { handleRegister } from "../../firebase";
-import { w, h } from "../../utils/ui/dimension";
+import { w } from "../../utils/ui/dimension";
 import styles from "./style";
 
 function Register({ navigation }) {
