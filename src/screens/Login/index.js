@@ -10,8 +10,8 @@ import { w } from "../../utils/ui/dimension";
 import styles from "./style";
 
 function Login({ navigation }) {
-  const [email, setEmail] = useState("tayfun111423@gmail.com");
-  const [password, setPassword] = useState("tayfun97");
+  const [email, setEmail] = useState("demirci.sena@yaho.com");
+  const [password, setPassword] = useState("123456789");
 
   return (
     <View style={styles.container}>

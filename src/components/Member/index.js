@@ -5,7 +5,7 @@ import { styles } from './styles';
 
 const Member = ({ adminAllowedProfilTimes, memberName, adminMemberNames,
     memberAllowedTime }) => {
-
+    
     return (
         <View style={styles.member}>
             <View>
