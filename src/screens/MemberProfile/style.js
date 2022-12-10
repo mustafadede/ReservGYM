@@ -25,6 +25,17 @@ const styles = StyleSheet.create({
     height: 80,
     bottom: H(-5),
   },
+  disabledButonCircular:{
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: H(50),
+    padding: 15,
+    width: 80,
+    height: 80,
+    bottom: H(-5),
+    opacity:0.5,
+
+  }
 });
 
 export default styles;

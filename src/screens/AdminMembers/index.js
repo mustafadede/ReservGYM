@@ -20,9 +20,6 @@ const AdminMembers = ({ navigation, route }) => {
   dispatch(getUserID(userid));
 
 
-  const openMemberProfile = () => {
-    navigation.navigate("AdminMember")
-  }
 
   useEffect(() => {
     let rootRef = database().ref();
@@ -46,12 +43,14 @@ const AdminMembers = ({ navigation, route }) => {
           data={Object.keys(userList)}
           initialNumToRender={10}
           renderItem={({ item }) => (
-            <TouchableOpacity onPress={openMemberProfile}>
+            <TouchableOpacity onPress={() => navigation.navigate("AdminMember",{memberId:userList[item].userid})}>
               <Member
+                
                 adminMemberNames={userList[item].name + " " + userList[item].surname}
                 adminAllowedProfilTimes={userList[item].allowedProfileTime}
               />
             </TouchableOpacity>
+            
           )}
           nestedScrollEnabled
         />

@@ -94,6 +94,7 @@ const handleRegister = (email, password, names, surname, navigation) => {
           surname: surname,
           weight: "",
           age: "",
+          length: "",
           status: false,
           allowedProfileTime: 0,
         })
@@ -125,4 +126,6 @@ const addReservation = (trainerName, dateTime, memberName) => {
     });
 };
 
-export { handleLogin, handleRegister, onGoogleButtonPress, addReservation };
+
+
+export { handleLogin, handleRegister, onGoogleButtonPress, addReservation, };

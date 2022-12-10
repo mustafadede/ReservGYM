@@ -53,7 +53,7 @@ const MemberProfile = ({ navigation }) => {
           <Spacing spacing={spacing.xs} />
           <Member style={styles.member} memberName={user.name + " " + user.surname} memberAllowedTime={user.allowedProfileTime} />
           <Spacing spacing={spacing.s} />
-          <MemberInfo status={user.status} />
+          <MemberInfo status={user.status} userid={userId} />
           <View style={styles.buttonLinearContainer}>
             <View style={styles.buttonLinear}>
               <LinearButton
@@ -70,8 +70,8 @@ const MemberProfile = ({ navigation }) => {
               />
             </View>
           </View>
-          <TouchableOpacity onPress={() => navigation.navigate("QrCodeScreen")}>
-            <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} colors={[colorPalette.lightRed, colorPalette.darkRed]} style={styles.buttonCircular}>
+          <TouchableOpacity onPress={() => navigation.navigate("QrCodeScreen")} disabled ={user.status === false ? true : false}>
+            <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} colors={[colorPalette.lightRed, colorPalette.darkRed]} style={user.status === false ? styles.disabledButonCircular : styles.buttonCircular} >
               <Text style={{ color: colorPalette.white, fontWeight: "bold" }}>
                 <Icon name="camera" size={30} />
               </Text>
