@@ -10,6 +10,7 @@ import database from "@react-native-firebase/database";
 import { HeaderBar, LinearButton, TrainerCard } from "../../components/";
 import colorPalette from "../../themes/colors";
 import styles from "./style";
+import { W, H } from "../../utils/ui/dimension";
 
 const TrainerList = ({ navigation }) => {
   const [date, setDate] = useState(new Date());
@@ -50,7 +51,7 @@ const TrainerList = ({ navigation }) => {
   const bottomSheetModalRef = useRef(null);
 
   // variables
-  const snapPoints = useMemo(() => ["50%"], []);
+  const snapPoints = useMemo(() => [H(55)], []);
 
   // callbacks
   const handlePresentModalPress = useCallback(() => {
