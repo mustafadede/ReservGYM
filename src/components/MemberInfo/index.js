@@ -13,7 +13,7 @@ const MemberInfo = ({ status, userid }) => {
   const [age, setAge] = useState("");
   const [keys, setKeys] = useState("");
   const [statusData, setStatusData] = useState(false);
-  const [inputDisabled, setInputDisabled] = useState(false);
+  
 
 
   useEffect(() => {
@@ -40,7 +40,6 @@ const MemberInfo = ({ status, userid }) => {
       weight: weight
     })
       .then(() => {
-        setInputDisabled(inputDisabled === true ? false : true);
         Alert.alert("Güncelleme", "Bilgileriniz başarı ile güncellendi.",
           [, { text: "OK" }]);
         console.log("User ınformation added");
