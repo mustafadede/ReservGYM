@@ -10,11 +10,7 @@
 
 <img src="https://cdn.discordapp.com/attachments/1044956647996526623/1051553029469507594/resergym.png" alt="drawing" width="200"/>
 
-
-
 https://user-images.githubusercontent.com/102325409/206927962-17e09241-9e3f-463d-8467-3390eb8777a8.mp4
-
-
 
 ## Setup
 
@@ -86,3 +82,13 @@ You can learn more from here : <a href="https://reactnative.dev/">ReactNative Do
 [@mrtlive](https://www.github.com/mrtlive)
 <br>
 [@demircisena](https://www.github.com/demircisena)
+
+##Additional Information
+
+You can see the first phase of our project as an image we have done a prototype version of our app in Figma with collab feature.
+
+![image](https://user-images.githubusercontent.com/95627279/206928693-b705e06a-8bfb-47cb-86a2-74d5fd4dafa8.png)
+
+Then we solve the task management with trello.
+
+[Here is the link](https://trello.com/b/AFdoaM2i/reservgym)
