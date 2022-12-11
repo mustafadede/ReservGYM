@@ -29,7 +29,14 @@ const Reservation = ({ navigation }) => {
     if (isFocused) {
       readReservation();
     }
-  }, [isFocused]);
+  }, [isFocused, data]);
+
+
+
+  deleteReservationFunc = (item) => {
+    database()
+    .ref("/Reservations/" + item).remove();
+  }  
 
   return (
     <View style={styles.container}>
@@ -45,6 +52,9 @@ const Reservation = ({ navigation }) => {
                 <Text style={styles.trainername}>{data[item].trainerName}</Text>
                 <Text style={styles.dateTime}>{data[item].dateTime}</Text>
               </View>
+              <TouchableOpacity onPress={() => deleteReservationFunc(item)} style={{ marginLeft: "auto" }}>
+                <Icon name={"delete"} color={colorPalette.lightRed} size={30} />
+              </TouchableOpacity>
             </View>
           )}
           nestedScrollEnabled

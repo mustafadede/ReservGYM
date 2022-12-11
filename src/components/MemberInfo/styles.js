@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   memberProfileDetails: {
-    width: W(90),
+    width: W(82),
     flexDirection: "row",
     justifyContent: "space-around",
   },

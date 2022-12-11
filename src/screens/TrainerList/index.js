@@ -26,7 +26,6 @@ const TrainerList = ({ navigation }) => {
       .then((snapshot) => {
         if (snapshot.val()) {
           const result = Object.keys(snapshot.val()).map((key) => snapshot.val()[key]);
-          console.log(result);
           if (result.some((item) => item.memberName === userId)) {
             Alert.alert("Uyarı", "Zaten Aynı Tarihe Bir Randevunuz Bulunmaktadır.", [{ text: "OK", onPress: () => navigation.navigate("Reservation") }]);
           } else {
@@ -34,7 +33,6 @@ const TrainerList = ({ navigation }) => {
               Alert.alert("Uyarı", "Bu tarih ve saate başka bir kişi rezervasyon yapmış", [{ text: "OK", onPress: () => navigation.navigate("Reservation") }]);
             } else {
               addReservation(reservation.trainer, date.toLocaleString().slice(0, -3), userId);
-              // setReservation({ trainer: reservation.trainer, dateTime: date.toLocaleString() });
               Alert.alert("Rezervasyon Başarıyla Oluşturuldu", `${date.toLocaleString().slice(0, -3)} tarihine rezervasyonunuz oluşturulmuştur`, [
                 { text: "OK", onPress: () => navigation.navigate("Reservation") },
               ]);
@@ -42,7 +40,6 @@ const TrainerList = ({ navigation }) => {
           }
         } else {
           addReservation(reservation.trainer, date.toLocaleString().slice(0, -3), userId);
-          // setReservation({ trainer: reservation.trainer, dateTime: date.toLocaleString() });
           Alert.alert("Rezervasyon Başarıyla Oluşturuldu", `${date.toLocaleString().slice(0, -3)} tarihine rezervasyonunuz oluşturulmuştur`, [
             { text: "OK", onPress: () => navigation.navigate("Reservation") },
           ]);
@@ -59,6 +56,7 @@ const TrainerList = ({ navigation }) => {
   const handlePresentModalPress = useCallback(() => {
     bottomSheetModalRef.current?.present();
   }, []);
+
   const handleSheetChanges = useCallback((index) => {
     console.log("handleSheetChanges", index);
   }, []);
@@ -104,6 +102,7 @@ const TrainerList = ({ navigation }) => {
                 is24hourSource="locale"
                 textColor={"black"}
                 style={styles.contentDate}
+                minimumDate={new Date()}
               />
               <LinearButton colors={[colorPalette.lightRed, colorPalette.darkRed]} title={"Randevu al"} onClickHandler={reservationAddCheck} />
             </View>

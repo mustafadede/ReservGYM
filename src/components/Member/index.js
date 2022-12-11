@@ -10,7 +10,7 @@ const Member = ({ adminAllowedProfilTimes, memberName, adminMemberNames,
         <View style={styles.member}>
             <View>
                 <Image
-                    source={require("../../assets/logo.png")}
+                    source={require("../../assets/profilePic.png")}
                     style={styles.memberImage}
                 />
             </View>

@@ -49,7 +49,7 @@ const emailWrong = () => Alert.alert("Dikkat", "Email Adresiniz Hatalı !!", [, 
 const tooManyRequest = () => Alert.alert("Dikkat", "Çok Fazla Giriş Yapmayı Denediniz! 5 Dakika Sonra Tekrar Deneyiniz!", [, { text: "OK" }]);
 
 const validationAdminPanel = [
-  "tayfun111423@gmail.com"
+  // "tayfun111423@gmail.com"
 ]
 
 const handleLogin = (email, password, navigation) => {
@@ -94,7 +94,7 @@ const handleRegister = (email, password, names, surname, navigation) => {
           surname: surname,
           weight: "",
           age: "",
-          length: "",
+          height: "",
           status: false,
           allowedProfileTime: 0,
         })
@@ -125,7 +125,5 @@ const addReservation = (trainerName, dateTime, memberName) => {
       console.log("Reservation added");
     });
 };
-
-
 
 export { handleLogin, handleRegister, onGoogleButtonPress, addReservation, };
