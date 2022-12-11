@@ -1,7 +1,7 @@
 const data = [
   {
     text: "",
-    image: require("../assets/Performance.json"),
+    image: require("../assets/res_gym_logo.json"),
   },
   {
     text: "Uygulamaya Kayıt Ol & Giriş Yap !",

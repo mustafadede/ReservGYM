@@ -13,8 +13,6 @@ const MemberInfo = ({ status, userid }) => {
   const [age, setAge] = useState("");
   const [keys, setKeys] = useState("");
   const [statusData, setStatusData] = useState(false);
-  
-
 
   useEffect(() => {
     let rootRef = database().ref();
@@ -42,7 +40,6 @@ const MemberInfo = ({ status, userid }) => {
       .then(() => {
         Alert.alert("Güncelleme", "Bilgileriniz başarı ile güncellendi.",
           [, { text: "OK" }]);
-        console.log("User ınformation added");
       });
   }
 

@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import Icon from "react-native-vector-icons/FontAwesome";
 import LinearGradient from "react-native-linear-gradient";
 import database from "@react-native-firebase/database";
+import { useIsFocused } from "@react-navigation/native";
 
 import { spacing } from "../../configs";
 import { Member, MemberInfo, Spacing, HeaderBar, LinearButton } from "../../components";
@@ -17,6 +18,7 @@ const MemberProfile = ({ navigation }) => {
   const { userId } = useSelector((state) => state.app);
   const [loaded, setLoaded] = useState(false);
   const [user, setUser] = useState([]);
+  const isFocused = useIsFocused();
 
   useEffect(() => {
     const loadUserDataFromFirebase = () => {
@@ -35,8 +37,10 @@ const MemberProfile = ({ navigation }) => {
           setLoaded(true);
         });
     };
-    loadUserDataFromFirebase();
-  }, []);
+    if (isFocused) {
+      loadUserDataFromFirebase();
+    }
+  }, [isFocused]);
 
   return (
     <>
@@ -51,7 +55,7 @@ const MemberProfile = ({ navigation }) => {
           <Spacing spacing={spacing.xs} />
           <Member style={styles.member} memberName={user.name + " " + user.surname} memberAllowedTime={user.allowedProfileTime} />
           <Spacing spacing={spacing.s} />
-          <MemberInfo status={user.status} userid={userId} />
+          <MemberInfo status={user.status.paymentBoolean} userid={userId} />
           <View style={styles.buttonLinearContainer}>
             <View style={styles.buttonLinear}>
               <LinearButton
@@ -68,15 +72,32 @@ const MemberProfile = ({ navigation }) => {
               />
             </View>
           </View>
-          <TouchableOpacity onPress={() => navigation.navigate("QrCodeScreen")} disabled ={user.status === false ? true : false}>
-            <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} colors={[colorPalette.lightRed, colorPalette.darkRed]} style={user.status === false ? styles.disabledButonCircular : styles.buttonCircular} >
+          <TouchableOpacity onPress={() => navigation.navigate("QrCodeScreen")} disabled={
+            user.status.paymentBoolean === false ||
+              user.status.adminBoolean === true ? true : false}>
+            <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} colors={[colorPalette.lightRed, colorPalette.darkRed]}
+              style={user.status.paymentBoolean === false ||
+                user.status.adminBoolean === true ?
+                styles.disabledButonCircular : styles.buttonCircular} >
               <Text style={{ color: colorPalette.white, fontWeight: "bold" }}>
                 <Icon name="camera" size={30} />
               </Text>
             </LinearGradient>
           </TouchableOpacity>
           <Spacing spacing={spacing.m} />
-          {user.status === false && (<Text>Üyeliğiniz askıya alınmıştır. Lütfen ödeme yapınız!</Text>)}
+          {
+            user.status.adminBoolean === true &&
+            (<Text style={{textAlign: "center"}}>
+              Üyeliğiniz askıya alınmıştır. Lütfen iletişime geçiniz!
+            </Text>)
+          }
+          {
+            user.status.paymentBoolean === false && 
+            user.status.adminBoolean === false &&
+            (<Text>
+              Üyelik süreniz dolmuştur. Lütfen ödeme yapiniz!
+            </Text>)
+          }
         </View>
       )}
     </>
