@@ -22,7 +22,7 @@ const Member = ({ adminAllowedProfilTimes, memberName, adminMemberNames,
                     Üyelik Geçerlilik Süresi: {
                         adminAllowedProfilTimes === undefined ?
                             memberAllowedTime : adminAllowedProfilTimes
-                    } Ay
+                    } Gün
                 </Text>
             </View>
         </View>

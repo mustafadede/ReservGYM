@@ -93,11 +93,13 @@ const handleRegister = (email, password, names, surname, navigation) => {
           weight: "",
           age: "",
           height: "",
-          status: false,
+          status: {
+            paymentBoolean: false,
+            adminBoolean : true,
+          },
           allowedProfileTime: 0,
         })
         .then(() => {
-          console.log("User Registered to firebase!");
           navigation.navigate("Login");
         });
     })
@@ -119,9 +121,6 @@ const addReservation = (trainerName, dateTime, memberName) => {
       dateTime: dateTime,
       memberName: memberName,
     })
-    .then(() => {
-      console.log("Reservation added");
-    });
 };
 
 export { handleLogin, handleRegister, onGoogleButtonPress, addReservation };

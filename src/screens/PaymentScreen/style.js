@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   creditCard: {
     width: W(100),
     height: H(25),
-    marginTop: H(5),
+    marginTop: H(2),
     resizeMode: "contain",
   },
   creditCardForm: {

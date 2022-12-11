@@ -7,10 +7,12 @@ import { HeaderBar, LinearButton, Member, Spacing } from "../../components";
 import colorPalette from "../../themes/colors";
 import { spacing } from "../../configs/";
 import { styles } from "./style";
+import { SLEEP } from "../../utils/sleep";
 
 const AdminMember = ({ navigation, route }) => {
   const { memberId } = route.params;
   const [user, setUser] = useState([]);
+  const [currentStatus, setCurrentStatus] = useState();
   const [keys, setKeys] = useState("");
 
   useEffect(() => {
@@ -23,13 +25,21 @@ const AdminMember = ({ navigation, route }) => {
       .then((snapshot) => {
         const key = Object.keys(snapshot.val())[0];
         setUser(snapshot.val()[key]);
+        setCurrentStatus(snapshot.val()[key].status.paymentBoolean)
         setKeys(key);
+      })
+      .then(async () => {
+        await SLEEP(1500);
       });
   }, []);
 
   const changeStatus = (status) => {
+    console.log(currentStatus, status);
     database().ref("Users/" + keys.toString()).update({
-      status: status,
+      status: {
+        paymentBoolean: currentStatus,
+        adminBoolean: status,
+      },
     })
       .then(() => {
         console.log("User ınformation added");
@@ -44,7 +54,8 @@ const AdminMember = ({ navigation, route }) => {
       />
       <View style={styles.main}>
         <Spacing spacing={spacing.xxs} />
-        <Member memberName={user.name + " " + user.surname} />
+        <Member memberName={user.name + " " + user.surname} 
+        memberAllowedTime={user.allowedProfileTime} />
         <Spacing spacing={spacing.xs} />
         <View style={styles.paymentList}>
           <Text style={styles.paymentTitle}>Ödemeler</Text>
@@ -60,12 +71,12 @@ const AdminMember = ({ navigation, route }) => {
           </View>
         </View>
         <Spacing spacing={spacing.xs} />
-        <LinearButton colors={[colorPalette.darkRed, colorPalette.lightRed]} title={"Üyeliği Askıya Al"} onClickHandler={() => {
-          changeStatus(false)
-        }} />
-        <Spacing spacing={spacing.s} />
         <LinearButton colors={[colorPalette.darkRed, colorPalette.lightRed]} title={"Üyeliği Aç"} onClickHandler={() => {
           changeStatus(true)
+        }} />
+        <Spacing spacing={spacing.s} />
+        <LinearButton colors={[colorPalette.darkRed, colorPalette.lightRed]} title={"Üyeliği Askıya Al"} onClickHandler={() => {
+          changeStatus(false)
         }} />
       </View>
     </>
