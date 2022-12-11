@@ -27,7 +27,6 @@ const MemberProfile = ({ navigation }) => {
         .equalTo(userId)
         .once("value")
         .then((snapshot) => {
-          console.log("işlem başladı");
           const key = Object.keys(snapshot.val())[0];
           setUser(snapshot.val()[key]);
         })
@@ -36,7 +35,6 @@ const MemberProfile = ({ navigation }) => {
           setLoaded(true);
         });
     };
-
     loadUserDataFromFirebase();
   }, []);
 
@@ -77,6 +75,8 @@ const MemberProfile = ({ navigation }) => {
               </Text>
             </LinearGradient>
           </TouchableOpacity>
+          <Spacing spacing={spacing.m} />
+          {user.status === false && (<Text>Üyeliğiniz askıya alınmıştır. Lütfen ödeme yapınız!</Text>)}
         </View>
       )}
     </>

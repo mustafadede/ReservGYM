@@ -18,4 +18,4 @@ const BarcodeScreenExample = ({navigation}) => {
     />)
 }
 
-export default BarcodeScreenExample
+export default BarcodeScreenExample;

@@ -9,13 +9,11 @@ import styles from "./style";
 import { LinearButton } from "../../components/";
 import colorPalette from "../../themes/colors";
 
-
-
 const WelcomePage = ({ navigation, route }) => {
 
   const { userid } = route.params;
   const dispatch = useDispatch();
-  const [welcomeName,setWelcomeName] = useState("");
+  const [welcomeName,setWelcomeName] = useState({name:"...",surname:"..."});
 
   dispatch(getUserID(userid));
 
@@ -32,7 +30,6 @@ const WelcomePage = ({ navigation, route }) => {
       })
   },[])
   
-
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={require("../../assets/welcome.png")} />
@@ -46,7 +43,6 @@ const WelcomePage = ({ navigation, route }) => {
           title={"Profiline Git"}
           onClickHandler={() => {
             dispatch(getUserID(userid));
-
             navigation.navigate("MemberProfile");
           }}
         />

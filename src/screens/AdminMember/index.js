@@ -1,24 +1,21 @@
-import React, {useEffect, useState} from "react";
-import { View, Text } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, Text, Alert } from "react-native";
 
 import database from "@react-native-firebase/database";
 
-import { HeaderBar, LinearButton, Member, MemberInfo, Spacing } from "../../components";
+import { HeaderBar, LinearButton, Member, Spacing } from "../../components";
 import colorPalette from "../../themes/colors";
 import { spacing } from "../../configs/";
 import { styles } from "./style";
 
-
-const AdminMember = ({ navigation ,route }) => {
-  const { memberId} = route.params;
-  const [user,setUser]= useState([]);
-  const [status,setStatus]= useState(false);
+const AdminMember = ({ navigation, route }) => {
+  const { memberId } = route.params;
+  const [user, setUser] = useState([]);
   const [keys, setKeys] = useState("");
-
 
   useEffect(() => {
     let rootRef = database().ref();
-     rootRef
+    rootRef
       .child("Users")
       .orderByChild("userid")
       .equalTo(memberId)
@@ -27,20 +24,18 @@ const AdminMember = ({ navigation ,route }) => {
         const key = Object.keys(snapshot.val())[0];
         setUser(snapshot.val()[key]);
         setKeys(key);
-        console.log(user);
       });
   }, []);
 
   const changeStatus = (status) => {
-    database().ref("Users/" + keys.toString() ).update({
-     status: status,
-     
- })
-   .then(() => {
-     console.log("User ınformation added");
-   });
-}
-
+    database().ref("Users/" + keys.toString()).update({
+      status: status,
+    })
+      .then(() => {
+        console.log("User ınformation added");
+        Alert.alert("Üyelik işlemi", `Üyelik ${status === false ? "pasif" : "aktif"} hale getirildi`, [, { text: "OK" }]);
+      });
+  }
 
   return (
     <>
@@ -49,9 +44,8 @@ const AdminMember = ({ navigation ,route }) => {
       />
       <View style={styles.main}>
         <Spacing spacing={spacing.xxs} />
-        <Member memberName={user.name + " " + user.surname}/>
+        <Member memberName={user.name + " " + user.surname} />
         <Spacing spacing={spacing.xs} />
-        {/* <MemberInfo status={user.status}/> */}
         <View style={styles.paymentList}>
           <Text style={styles.paymentTitle}>Ödemeler</Text>
           <View style={styles.paymentListTitle}>
@@ -66,11 +60,13 @@ const AdminMember = ({ navigation ,route }) => {
           </View>
         </View>
         <Spacing spacing={spacing.xs} />
-        <LinearButton colors={[colorPalette.darkRed, colorPalette.lightRed]} title={"Üyeliği Askıya Al"} onClickHandler={()=>{setStatus(false);
-        changeStatus(status)}}/>
+        <LinearButton colors={[colorPalette.darkRed, colorPalette.lightRed]} title={"Üyeliği Askıya Al"} onClickHandler={() => {
+          changeStatus(false)
+        }} />
         <Spacing spacing={spacing.s} />
-        <LinearButton colors={[colorPalette.darkRed, colorPalette.lightRed]} title={"Üyeliği Aç"} onClickHandler={()=>{setStatus(true);
-        changeStatus(status)}} />
+        <LinearButton colors={[colorPalette.darkRed, colorPalette.lightRed]} title={"Üyeliği Aç"} onClickHandler={() => {
+          changeStatus(true)
+        }} />
       </View>
     </>
   );
