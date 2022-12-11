@@ -10,6 +10,12 @@
 
 <img src="https://cdn.discordapp.com/attachments/1044956647996526623/1051553029469507594/resergym.png" alt="drawing" width="200"/>
 
+
+
+https://user-images.githubusercontent.com/102325409/206927962-17e09241-9e3f-463d-8467-3390eb8777a8.mp4
+
+
+
 ## Setup
 
 - React Native
