@@ -1,15 +1,14 @@
 # ReservGYM
+![React Native](https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
+![Firebase](https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase)
+![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
+![iOS](https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=ios&logoColor=white)
+![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
+![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white)
 
-## Screenshots
 
-<div>
-<img src="" height="500" />
-<img src="" height="500" />
-<img src="" height="500" />
-<img src="" height="500" />
-<img src="" height="500" />
-<img src="" height="500" />
-</div>
+<img src="https://cdn.discordapp.com/attachments/1044956647996526623/1051553029469507594/resergym.png" alt="drawing" width="200"/>
 
 ## Setup
 
@@ -18,38 +17,30 @@
 ## Tools
 
 - Bottom Sheet
-- React Native Navigation
+- React Navigation
 - Redux
 - Lottie
 - App Intro Slider
 - React Native Vector Icons
 - React Native Vision Camera
+- React Native Date Time Picker
+- Linear Gradient
 - Google Firebase
-
-## Features
-
-- Listing returned jobs with API.
-- You can change the page with arrow icons.
-- You can click the job and see the details of job .
-- There is two buton under the job details.
-- You can add the jobs you like to your favourites.
-- You can list your favourites jobs with drawer
-
-## API
-
-`API Linki: https://www.themuse.com/developers/api/v2`
+    - Authentication
+    - Realtime Database
+- Checkbox
 
 ## Beginning
 
 Clone this repository on your local machine.
 <br>
-`git clone https://github.com/yurkenn/react-native-codework.git`
+`git clone https://github.com/mustafadede/ReservGYM.git`
 
 ## Use
 
 To use it after cloning the project:
 <br>
-`cd react-native-codework`
+`cd ReservGYM`
 <br>
 `code .`
 <br>
@@ -65,10 +56,23 @@ These instructions will get a copy of the project up and running on your local m
 
 ## Available Scripts
 
-In the project directory you can run:
+In the project directory you can run android:
 <br>
 `npx react-native run-android`
+<br>
+or if you want to run IOS, you can use:
+<br>
+`npx react-native run-ios`
 
 ## For more information
 
 You can learn more from here : <a href="https://reactnative.dev/">ReactNative Documentation</a>
+
+## Special thanks to:
+[@tayfuntop](https://www.github.com/tayfuntop)
+<br>
+[@umutzengi](https://www.github.com/umutzengi)
+<br>
+[@mrtlive](https://www.github.com/mrtlive)
+<br>
+[@demircisena](https://www.github.com/demircisena)
