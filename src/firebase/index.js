@@ -48,9 +48,7 @@ const passwordWrong = () => Alert.alert("Dikkat", "Şifre Hatalı!", [, { text: 
 const emailWrong = () => Alert.alert("Dikkat", "Email Adresiniz Hatalı !!", [, { text: "OK" }]);
 const tooManyRequest = () => Alert.alert("Dikkat", "Çok Fazla Giriş Yapmayı Denediniz! 5 Dakika Sonra Tekrar Deneyiniz!", [, { text: "OK" }]);
 
-const validationAdminPanel = [
-  // "tayfun111423@gmail.com"
-]
+const validationAdminPanel = ["admin@admin.com"];
 
 const handleLogin = (email, password, navigation) => {
   auth()
@@ -126,4 +124,4 @@ const addReservation = (trainerName, dateTime, memberName) => {
     });
 };
 
-export { handleLogin, handleRegister, onGoogleButtonPress, addReservation, };
+export { handleLogin, handleRegister, onGoogleButtonPress, addReservation };

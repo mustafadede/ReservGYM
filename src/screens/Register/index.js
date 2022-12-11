@@ -90,16 +90,7 @@ function Register({ navigation }) {
           />
           <Text style={styles.kvkk}>
             Devam ederek
-            <Text
-              style={{ textDecorationLine: "underline" }}
-              onPress={() => {
-                Linking.openURL("https://www.nvi.gov.tr/kvkk-aydinlatma-metni");
-              }}
-            >
-              {" "}
-              KVKK
-            </Text>{" "}
-            ve Kullanım Koşullarımızı kabul etmiş olduğunuzu onaylıyorsunuz.
+            <Text style={{ textDecorationLine: "underline" }}> KVKK</Text> ve Kullanım Koşullarımızı kabul etmiş olduğunuzu onaylıyorsunuz.
           </Text>
         </View>
         <View style={styles.inputButton}>
