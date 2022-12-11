@@ -59,6 +59,10 @@ Run the following commands in the project folder to install the project dependen
 <br>
 <br>
 These instructions will get a copy of the project up and running on your local machine for development and testing purposes.
+If you want to try our QR Code scanner feature, you can use this QR Code below
+
+![image](https://user-images.githubusercontent.com/95627279/206928230-b972eb37-292a-47d8-99d6-01db2fa4fa25.png)
+
 
 ## Available Scripts
 
