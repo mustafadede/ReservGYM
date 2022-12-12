@@ -93,7 +93,7 @@ You can learn more from here : <a href="https://reactnative.dev/">ReactNative Do
 <br>
 [@demircisena](https://www.github.com/demircisena)
 
-##Additional Information
+## Additional Information
 
 You can see the first phase of our project as an image we have done a prototype version of our app in Figma with collab feature.
 
