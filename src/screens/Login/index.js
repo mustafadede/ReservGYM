@@ -12,6 +12,7 @@ import styles from "./style";
 function Login({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
     <View style={styles.container}>
@@ -38,7 +39,7 @@ function Login({ navigation }) {
           <View style={styles.inputRow}>
             <Icon name="lock" size={30} color={colorPalette.lightgray} />
             <TextInput
-              secureTextEntry
+              secureTextEntry={!showPassword}
               placeholderTextColor={colorPalette.darkgray}
               autoCapitalize="none"
               placeholder="Şifre"
@@ -46,20 +47,16 @@ function Login({ navigation }) {
               onChangeText={(text) => setPassword(text)}
               style={styles.inputText}
             />
-            <Icon name="eye-slash" size={24} color={colorPalette.lightgray} />
+            <TouchableOpacity
+              onPress={() => {
+                setShowPassword(!showPassword);
+              }}
+            >
+              <Icon name="eye-slash" size={24} color={colorPalette.lightgray} />
+            </TouchableOpacity>
           </View>
         </View>
-        <View style={styles.checkRow}>
-          <View style={{ marginRight: w * 0.5 }}></View>
-          <Text
-            style={{ textDecorationLine: "underline" }}
-            onPress={() => {
-              Linking.openURL("https://support.google.com/mail/answer/41078?hl=tr&co=GENIE.Platform%3DDesktop");
-            }}
-          >
-            Şifrenizi unuttunuz mu?
-          </Text>
-        </View>
+        <View style={styles.checkRow}></View>
         <View style={styles.inputButton}>
           <LinearButton
             colors={[colorPalette.lightRed, colorPalette.darkRed]}

@@ -5,10 +5,11 @@ import CheckBox from "@react-native-community/checkbox";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { handleRegister } from "../../firebase";
 
-import { LinearButton } from "../../components";
+import { LinearButton, Spacing } from "../../components";
 import colorPalette from "../../themes/colors";
 import { w } from "../../utils/ui/dimension";
 import styles from "./style";
+import { spacing } from "../../configs";
 
 function Register({ navigation }) {
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
@@ -16,6 +17,7 @@ function Register({ navigation }) {
   const [password, setPassword] = useState("");
   const [names, setNames] = useState("");
   const [surname, setSurname] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
     <View style={styles.container}>
@@ -67,13 +69,15 @@ function Register({ navigation }) {
             <TextInput
               placeholder="Şifre"
               value={password}
-              secureTextEntry
+              secureTextEntry={!showPassword}
               autoCapitalize="none"
               onChangeText={(text) => setPassword(text)}
               placeholderTextColor={colorPalette.darkgray}
               style={styles.inputText}
             />
-            <Icon name="eye-slash" size={24} color={colorPalette.lightgray} />
+            <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+              <Icon name="eye-slash" size={24} color={colorPalette.lightgray} />
+            </TouchableOpacity>
           </View>
         </View>
         <View style={styles.checkRow}>
@@ -93,6 +97,7 @@ function Register({ navigation }) {
             <Text style={{ textDecorationLine: "underline" }}> KVKK</Text> ve Kullanım Koşullarımızı kabul etmiş olduğunuzu onaylıyorsunuz.
           </Text>
         </View>
+        <Spacing spacing={spacing.s} />
         <View style={styles.inputButton}>
           <LinearButton
             colors={[colorPalette.lightRed, colorPalette.darkRed]}

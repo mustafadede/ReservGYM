@@ -13,13 +13,7 @@ const TrainerCard = ({ title, subTitle, handlePresentModalPress, setReservation 
           handlePresentModalPress();
         }}
       >
-        <Image
-          source={{
-            uri: "https://avatars.githubusercontent.com/u/100048051?v=4",
-          }}
-          resizeMode="cover"
-          style={styles.trainerImage}
-        />
+        <Image source={require("../../assets/profilePic.png")} resizeMode="cover" style={styles.trainerImage} />
         <View style={styles.trainerCardTitlesWrapper}>
           <Text style={styles.trainerCardTitleMain}>{title}</Text>
           <Text style={styles.trainerCardTitleSub}>{subTitle}</Text>

@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
   },
   lottieWrapper: {
     overflow: "hidden",
-    borderRadius: 250,
   },
   lottieView: {
     width: W(100),

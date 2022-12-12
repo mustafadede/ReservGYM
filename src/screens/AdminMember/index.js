@@ -25,7 +25,7 @@ const AdminMember = ({ navigation, route }) => {
       .then((snapshot) => {
         const key = Object.keys(snapshot.val())[0];
         setUser(snapshot.val()[key]);
-        setCurrentStatus(snapshot.val()[key].status.paymentBoolean)
+        setCurrentStatus(snapshot.val()[key].status.paymentBoolean);
         setKeys(key);
       })
       .then(async () => {
@@ -35,27 +35,26 @@ const AdminMember = ({ navigation, route }) => {
 
   const changeStatus = (status) => {
     console.log(currentStatus, status);
-    database().ref("Users/" + keys.toString()).update({
-      status: {
-        paymentBoolean: currentStatus,
-        adminBoolean: status,
-      },
-    })
+    database()
+      .ref("Users/" + keys.toString())
+      .update({
+        status: {
+          paymentBoolean: currentStatus,
+          adminBoolean: status,
+        },
+      })
       .then(() => {
         console.log("User ınformation added");
-        Alert.alert("Üyelik işlemi", `Üyelik ${status === false ? "pasif" : "aktif"} hale getirildi`, [, { text: "OK" }]);
+        Alert.alert("Üyelik işlemi", `Üyelik ${status === false ? "aktif" : "pasif"} hale getirildi`, [, { text: "OK" }]);
       });
-  }
+  };
 
   return (
     <>
-      <HeaderBar title={"Üye"} back
-        onClickBackHandler={() => navigation.goBack()}
-      />
+      <HeaderBar title={"Üye"} back onClickBackHandler={() => navigation.goBack()} />
       <View style={styles.main}>
         <Spacing spacing={spacing.xxs} />
-        <Member memberName={user.name + " " + user.surname} 
-        memberAllowedTime={user.allowedProfileTime} />
+        <Member memberName={user.name + " " + user.surname} memberAllowedTime={user.allowedProfileTime} />
         <Spacing spacing={spacing.xs} />
         <View style={styles.paymentList}>
           <Text style={styles.paymentTitle}>Ödemeler</Text>
@@ -71,13 +70,21 @@ const AdminMember = ({ navigation, route }) => {
           </View>
         </View>
         <Spacing spacing={spacing.xs} />
-        <LinearButton colors={[colorPalette.darkRed, colorPalette.lightRed]} title={"Üyeliği Aç"} onClickHandler={() => {
-          changeStatus(true)
-        }} />
+        <LinearButton
+          colors={[colorPalette.darkRed, colorPalette.lightRed]}
+          title={"Üyeliği Askıya Al"}
+          onClickHandler={() => {
+            changeStatus(true);
+          }}
+        />
         <Spacing spacing={spacing.s} />
-        <LinearButton colors={[colorPalette.darkRed, colorPalette.lightRed]} title={"Üyeliği Askıya Al"} onClickHandler={() => {
-          changeStatus(false)
-        }} />
+        <LinearButton
+          colors={[colorPalette.darkRed, colorPalette.lightRed]}
+          title={"Üyeliği Aç"}
+          onClickHandler={() => {
+            changeStatus(false);
+          }}
+        />
       </View>
     </>
   );
