@@ -10,7 +10,7 @@
 
 <img src="https://cdn.discordapp.com/attachments/1044956647996526623/1051553029469507594/resergym.png" alt="drawing" width="200"/>
 
-https://user-images.githubusercontent.com/102325409/206927962-17e09241-9e3f-463d-8467-3390eb8777a8.mp4
+https://user-images.githubusercontent.com/100048051/206945301-1728a9c9-dddd-424a-b197-3e262ec84404.mp4
 
 ## Setup
 
@@ -55,6 +55,16 @@ Run the following commands in the project folder to install the project dependen
 <br>
 <br>
 These instructions will get a copy of the project up and running on your local machine for development and testing purposes.
+<br>
+<br>
+If you want to login admin page, you should
+<br>
+<br>
+email: `admin@admin.com`
+<br>
+password: `admin123`
+<br>
+<br>
 If you want to try our QR Code scanner feature, you can use this QR Code below
 
 ![image](https://user-images.githubusercontent.com/95627279/206928230-b972eb37-292a-47d8-99d6-01db2fa4fa25.png)
