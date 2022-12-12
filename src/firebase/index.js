@@ -95,7 +95,7 @@ const handleRegister = (email, password, names, surname, navigation) => {
           height: "",
           status: {
             paymentBoolean: false,
-            adminBoolean : true,
+            adminBoolean : false,
           },
           allowedProfileTime: 0,
         })

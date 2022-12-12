@@ -59,7 +59,7 @@ const PaymentScreen = ({ navigation }) => {
   }, [keys])
 
   const paymentFunc = () => {
-    if (keys !== "" && user.status.adminBoolean === false) {
+    if (keys !== "" && user.status.adminBoolean === false && validation === true) {
       database().ref("Users/" + keys).update({
         status: {
           paymentBoolean: true,
@@ -71,11 +71,13 @@ const PaymentScreen = ({ navigation }) => {
           Alert.alert("Ödeme işlemi", "Ödeme başari ile yapıldı. Üyeliğiniz aktifleştirilmiştir.", [, { text: "OK" }]);
           navigation.navigate("MemberProfile")
         });
-    } else if (keys !== "" && user.status.adminBoolean === true) {
+    } else if (keys !== "" && user.status.adminBoolean === true && validation === true) {
       Alert.alert("Ödeme işlemi", "Üyeliğiniz askıya alınmıştır. Lütfen kurum ile irtibata geçiniz!", [, { text: "OK" }]);
       navigation.navigate("MemberProfile")
+    } else if (validation === false) {
+      Alert.alert("Ödeme işlemi", "Kart bilgileriniz hatalıdır. Lütfen tekrar deneyiniz!", [, { text: "OK" }]);
     };
-  }
+  };
 
   return (
     <KeyboardAvoidingView style={styles.container}>
