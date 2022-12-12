@@ -1,57 +1,19 @@
-import {View, Text} from 'react-native';
-import React from 'react';
-import {useSelector} from 'react-redux';
-import {NavigationContainer} from '@react-navigation/native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import LinearButton from './components/linearButton/linearButton';
-import colorPalette from './themes/colors';
+import React from "react";
+import { View, StatusBar } from "react-native";
 
-function HomeScreen() {
-  const data = useSelector(state => state.app.appName);
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>{data}</Text>
-      <LinearButton
-        colors={[colorPalette.lightRed, colorPalette.darkRed]}
-        title={'BAAAS'}
-      />
-    </View>
-  );
-}
-
-function SettingsScreen() {
-  return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
-
-const Tab = createBottomTabNavigator();
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import Navigation from "./navigation";
 
 const Root = () => {
   return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{
-            tabBarLabel: 'Home',
-            tabBarIcon: () => <Icon name="home" size={30} />,
-          }}
-        />
-        <Tab.Screen
-          name="Settings"
-          options={{
-            tabBarLabel: 'Settings',
-            tabBarIcon: () => <Icon name="cog" size={30} />,
-          }}
-          component={SettingsScreen}
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <StatusBar backgroundColor="#fff" barStyle="dark-content" />
+        <View style={{ flex: 1 }}>
+          <Navigation />
+        </View>
+      </GestureHandlerRootView>
+    </>
   );
 };
 
